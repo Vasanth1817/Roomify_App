@@ -48,60 +48,60 @@ const Register = () => {
     <div className="page-shell" style={{ padding: '3rem 1.5rem' }}>
       <div className="auth-card glass-panel" style={{ maxWidth: '620px', margin: '0 auto', padding: '2rem' }}>
         <h1 style={{ marginBottom: '1rem' }}>Create your account</h1>
-        <p style={{ color: '#AAAABC', marginBottom: '2rem' }}>Register once and save your room layouts in the same backend used by the app.</p>
+        <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>Register once and save your room layouts in the same backend used by the app.</p>
         {error && <div style={{ marginBottom: '1rem', color: '#FF6B6B' }}>{error}</div>}
 
         <form onSubmit={handleSubmit}>
-          <label style={{ display: 'block', marginBottom: '0.8rem', color: '#AAAABC' }}>
+          <label style={{ display: 'block', marginBottom: '0.8rem', color: 'var(--text-muted)' }}>
             Full Name
             <input
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               placeholder="John Doe"
-              style={{ width: '100%', marginTop: '0.5rem', padding: '0.9rem 1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.12)', background: '#111', color: 'white' }}
+              style={{ width: '100%', marginTop: '0.5rem', padding: '0.9rem 1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.12)', background: 'var(--surface)', color: 'var(--text-main)' }}
             />
           </label>
 
-          <label style={{ display: 'block', marginBottom: '0.8rem', color: '#AAAABC' }}>
+          <label style={{ display: 'block', marginBottom: '0.8rem', color: 'var(--text-muted)' }}>
             Phone Number
             <input
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               placeholder="+91 98765 43210"
-              style={{ width: '100%', marginTop: '0.5rem', padding: '0.9rem 1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.12)', background: '#111', color: 'white' }}
+              style={{ width: '100%', marginTop: '0.5rem', padding: '0.9rem 1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.12)', background: 'var(--surface)', color: 'var(--text-main)' }}
             />
           </label>
 
-          <label style={{ display: 'block', marginBottom: '0.8rem', color: '#AAAABC' }}>
+          <label style={{ display: 'block', marginBottom: '0.8rem', color: 'var(--text-muted)' }}>
             Email
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
-              style={{ width: '100%', marginTop: '0.5rem', padding: '0.9rem 1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.12)', background: '#111', color: 'white' }}
+              style={{ width: '100%', marginTop: '0.5rem', padding: '0.9rem 1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.12)', background: 'var(--surface)', color: 'var(--text-main)' }}
             />
           </label>
 
-          <label style={{ display: 'block', marginBottom: '0.8rem', color: '#AAAABC' }}>
+          <label style={{ display: 'block', marginBottom: '0.8rem', color: 'var(--text-muted)' }}>
             Password
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Create a password"
-              style={{ width: '100%', marginTop: '0.5rem', padding: '0.9rem 1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.12)', background: '#111', color: 'white' }}
+              style={{ width: '100%', marginTop: '0.5rem', padding: '0.9rem 1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.12)', background: 'var(--surface)', color: 'var(--text-main)' }}
             />
           </label>
 
-          <label style={{ display: 'block', marginBottom: '1rem', color: '#AAAABC' }}>
+          <label style={{ display: 'block', marginBottom: '1rem', color: 'var(--text-muted)' }}>
             Confirm Password
             <input
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Repeat your password"
-              style={{ width: '100%', marginTop: '0.5rem', padding: '0.9rem 1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.12)', background: '#111', color: 'white' }}
+              style={{ width: '100%', marginTop: '0.5rem', padding: '0.9rem 1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.12)', background: 'var(--surface)', color: 'var(--text-main)' }}
             />
           </label>
 
@@ -110,7 +110,7 @@ const Register = () => {
           </button>
         </form>
 
-        <p style={{ marginTop: '1.5rem', color: '#AAAABC', textAlign: 'center' }}>
+        <p style={{ marginTop: '1.5rem', color: 'var(--text-muted)', textAlign: 'center' }}>
           Already have an account?{' '}
           <Link to="/login" style={{ color: '#8B4DFA' }}>
             Sign in.

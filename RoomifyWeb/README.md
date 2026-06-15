@@ -2,6 +2,8 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+Dependencies are defined in `dependencies.yml` for `RoomifyWeb` and can be synced into `package.json` with `npm run sync-deps`.
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)

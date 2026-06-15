@@ -40,7 +40,7 @@ const Profile = () => {
         <div style={{ display: 'flex', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
           <div>
             <h1 style={{ marginBottom: '0.5rem' }}>{user.full_name}</h1>
-            <p style={{ color: '#AAAABC' }}>{user.email}</p>
+            <p style={{ color: 'var(--text-muted)' }}>{user.email}</p>
           </div>
           <button
             onClick={() => {

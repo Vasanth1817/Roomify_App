@@ -88,7 +88,7 @@ try:
     
     def test_register_page_renders():
         driver.get(f"{BASE_URL}/register")
-        assert "Create Account" in driver.page_source
+        assert "Create your account" in driver.page_source
     run_test("TC-003", "Authentication", "Verify Registration Page Renders", test_register_page_renders)
 
     def test_catalog_page_renders():
@@ -155,5 +155,5 @@ with pd.ExcelWriter(output_path, engine='openpyxl') as writer:
     logs_df.to_excel(writer, sheet_name='Execution Log', index=False)
     details_df.to_excel(writer, sheet_name='Test Details', index=False)
 
-print(f"\\n✅ SUCCESS! Selenium Testing Complete.")
+print(f"\\nSUCCESS! Selenium Testing Complete.")
 print(f"Report saved to: {output_path}")

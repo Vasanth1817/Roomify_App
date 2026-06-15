@@ -16,7 +16,7 @@ const CatalogPage = () => {
     const loadData = async () => {
       try {
         const data = await getFurniture();
-        setFurniture(data.map((item) => ({ ...item, price: Number(item.price) || 0 })));
+        setFurniture(data.map((item) => ({ ...item, price: Number(String(item.price).replace(/\D/g, "")) || 0 })));
       } catch (err) {
         console.error('Failed to fetch furniture:', err);
       } finally {
@@ -51,9 +51,9 @@ const CatalogPage = () => {
       <div style={{ marginBottom: '2rem', display: 'grid', gridTemplateColumns: '1fr auto', gap: '1rem' }}>
         <div>
           <h2>Furniture Catalog</h2>
-          <p style={{ color: '#AAAABC' }}>Search, filter and preview the same furniture catalog used in the app.</p>
+          <p style={{ color: 'var(--text-muted)' }}>Search, filter and preview the same furniture catalog used in the app.</p>
         </div>
-        <div style={{ background: 'rgba(255,255,255,0.05)', padding: '1rem 1.25rem', borderRadius: '16px' }}>
+        <div style={{ background: 'var(--surface)', padding: '1rem 1.25rem', borderRadius: '16px' }}>
           <h3 style={{ margin: 0, color: spent > budget ? '#ff4d4d' : '#8B4DFA' }}>
             Selected: ₹{spent.toLocaleString()} / ₹{budget.toLocaleString()}
           </h3>
@@ -70,12 +70,12 @@ const CatalogPage = () => {
 
       <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
         <label className="search-input" style={{ flex: 1 }}>
-          <Search size={18} style={{ marginRight: '0.5rem', color: '#AAAABC' }} />
+          <Search size={18} style={{ marginRight: '0.5rem', color: 'var(--text-muted)' }} />
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search furniture or category"
-            style={{ width: '100%', background: 'transparent', border: 'none', color: 'white', outline: 'none' }}
+            style={{ width: '100%', background: 'transparent', border: 'none', color: 'var(--text-main)', outline: 'none' }}
           />
         </label>
 
@@ -94,7 +94,7 @@ const CatalogPage = () => {
       </div>
 
       {selectedModel && (
-        <div style={{ background: '#111', padding: '1rem', borderRadius: '12px', marginBottom: '2rem', textAlign: 'center' }}>
+        <div style={{ background: 'var(--surface)', padding: '1rem', borderRadius: '12px', marginBottom: '2rem', textAlign: 'center' }}>
           <h3>3D AR Viewer: {selectedModel.name}</h3>
           <p>Preview the selected item in 3D. Use mobile AR mode for compatible devices.</p>
           <model-viewer
@@ -104,7 +104,7 @@ const CatalogPage = () => {
             camera-controls
             ar
             ar-modes="scene-viewer webxr quick-look"
-            style={{ width: '100%', height: '420px', background: '#222', borderRadius: '14px' }}
+            style={{ width: '100%', height: '420px', background: 'var(--bg-darker)', borderRadius: '14px' }}
           />
           <button
             className="btn-secondary"
@@ -129,7 +129,7 @@ const CatalogPage = () => {
                 onError={(e) => { e.target.src = `https://via.placeholder.com/300x200/1A1A2E/8B4DFA?text=${encodeURIComponent(item.name)}` }}
               />
               <div style={{ marginTop: '1rem' }}>
-                <span style={{ fontSize: '0.8rem', color: '#AAAABC' }}>{item.category}</span>
+                <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{item.category}</span>
                 <h3 style={{ margin: '0.5rem 0' }}>{item.name}</h3>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem' }}>
                   <span style={{ fontWeight: '700', color: '#8B4DFA' }}>₹{item.price.toLocaleString()}</span>

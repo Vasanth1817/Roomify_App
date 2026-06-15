@@ -62,7 +62,7 @@ const Budget = () => {
 
     loadBudget();
     loadSpent();
-  }, [navigate, user]);
+  }, [navigate, user?.user_id]);
 
   if (!user) {
     return null;
@@ -95,19 +95,19 @@ const Budget = () => {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         <div className="glass-panel" style={{ padding: '2rem', borderRadius: '24px' }}>
           <h1 style={{ marginBottom: '0.5rem' }}>Budget Planner</h1>
-          <p style={{ color: '#AAAABC' }}>Track your budget, save a target amount, and compare it against current design costs.</p>
+          <p style={{ color: 'var(--text-muted)' }}>Track your budget, save a target amount, and compare it against current design costs.</p>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem', marginTop: '1.5rem' }}>
             <div className="glass-panel" style={{ padding: '1.5rem' }}>
-              <span style={{ color: '#AAAABC' }}>Current target</span>
+              <span style={{ color: 'var(--text-muted)' }}>Current target</span>
               <p style={{ marginTop: '0.5rem', fontSize: '2rem', fontWeight: '700' }}>₹{budget.toLocaleString()}</p>
             </div>
             <div className="glass-panel" style={{ padding: '1.5rem' }}>
-              <span style={{ color: '#AAAABC' }}>Total spent</span>
+              <span style={{ color: 'var(--text-muted)' }}>Total spent</span>
               <p style={{ marginTop: '0.5rem', fontSize: '2rem', fontWeight: '700' }}>₹{spent.toLocaleString()}</p>
             </div>
             <div className="glass-panel" style={{ padding: '1.5rem' }}>
-              <span style={{ color: '#AAAABC' }}>Remaining</span>
+              <span style={{ color: 'var(--text-muted)' }}>Remaining</span>
               <p style={{ marginTop: '0.5rem', fontSize: '2rem', fontWeight: '700', color: remaining < 0 ? '#EF4444' : '#22C55E' }}>
                 ₹{remaining.toLocaleString()}
               </p>
@@ -115,13 +115,13 @@ const Budget = () => {
           </div>
 
           <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: '1fr auto', gap: '1rem', alignItems: 'end' }}>
-            <label style={{ display: 'block', color: '#AAAABC' }}>
+            <label style={{ display: 'block', color: 'var(--text-muted)' }}>
               Enter your target budget
               <input
                 type="number"
                 value={target}
                 onChange={(e) => setTarget(e.target.value)}
-                style={{ width: '100%', marginTop: '0.5rem', padding: '1rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.12)', background: '#111', color: 'white' }}
+                style={{ width: '100%', marginTop: '0.5rem', padding: '1rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.12)', background: 'var(--surface)', color: 'var(--text-main)' }}
               />
             </label>
             <button onClick={handleSave} disabled={saving} className="btn-primary" style={{ height: '56px', borderRadius: '16px' }}>
@@ -133,10 +133,10 @@ const Budget = () => {
 
         <div className="glass-panel" style={{ padding: '2rem', borderRadius: '24px' }}>
           <h2>Design break down</h2>
-          <p style={{ color: '#AAAABC', marginBottom: '1.5rem' }}>Budget is calculated from items saved in your layouts.</p>
+          <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem' }}>Budget is calculated from items saved in your layouts.</p>
           <div style={{ display: 'grid', gap: '1rem' }}>
             {projects.length === 0 ? (
-              <div style={{ color: '#AAAABC' }}>No saved layouts found yet.</div>
+              <div style={{ color: 'var(--text-muted)' }}>No saved layouts found yet.</div>
             ) : (
               projects.map((project, index) => (
                 <div key={index} style={{ padding: '1rem', borderRadius: '18px', border: '1px solid rgba(255,255,255,0.08)' }}>

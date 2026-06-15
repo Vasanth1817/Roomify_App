@@ -68,7 +68,7 @@ const Home = () => {
           <div style={{ display: 'grid', gap: '2rem' }}>
             <div>
               <h1>Welcome to Roomify</h1>
-              <p style={{ color: '#AAAABC', maxWidth: '720px', marginTop: '1rem' }}>
+              <p style={{ color: 'var(--text-muted)', maxWidth: '720px', marginTop: '1rem' }}>
                 The website now matches the app flow. Log in or register to save designs, use the catalog, and manage your budget on the same backend.
               </p>
             </div>
@@ -95,7 +95,7 @@ const Home = () => {
       <div style={{ marginBottom: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1.5rem', flexWrap: 'wrap' }}>
           <div>
-            <p style={{ color: '#AAAABC' }}>Good to see you back,</p>
+            <p style={{ color: 'var(--text-muted)' }}>Good to see you back,</p>
             <h1 style={{ margin: 0 }}>{user.full_name}</h1>
           </div>
           <button className="btn-secondary" onClick={() => navigate('/profile')} style={{ padding: '0.9rem 1.4rem' }}>
@@ -105,21 +105,21 @@ const Home = () => {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem' }}>
           <div className="glass-panel" style={{ padding: '1.75rem' }}>
-            <span style={{ color: '#AAAABC' }}>Target budget</span>
+            <span style={{ color: 'var(--text-muted)' }}>Target budget</span>
             <p style={{ marginTop: '0.75rem', fontSize: '2rem', fontWeight: 700 }}>₹{budget.toLocaleString()}</p>
           </div>
           <div className="glass-panel" style={{ padding: '1.75rem' }}>
-            <span style={{ color: '#AAAABC' }}>Total spent</span>
+            <span style={{ color: 'var(--text-muted)' }}>Total spent</span>
             <p style={{ marginTop: '0.75rem', fontSize: '2rem', fontWeight: 700 }}>₹{spent.toLocaleString()}</p>
           </div>
           <div className="glass-panel" style={{ padding: '1.75rem' }}>
-            <span style={{ color: '#AAAABC' }}>Remaining</span>
+            <span style={{ color: 'var(--text-muted)' }}>Remaining</span>
             <p style={{ marginTop: '0.75rem', fontSize: '2rem', fontWeight: 700, color: remaining < 0 ? '#EF4444' : '#22C55E' }}>
               ₹{remaining.toLocaleString()}
             </p>
           </div>
           <div className="glass-panel" style={{ padding: '1.75rem' }}>
-            <span style={{ color: '#AAAABC' }}>Saved designs</span>
+            <span style={{ color: 'var(--text-muted)' }}>Saved designs</span>
             <p style={{ marginTop: '0.75rem', fontSize: '2rem', fontWeight: 700 }}>{savedCount}</p>
           </div>
         </div>
@@ -132,7 +132,7 @@ const Home = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}><Grid size={20} />
             <div>
               <h3>Furniture Catalog</h3>
-              <p style={{ color: '#AAAABC', marginTop: '0.5rem' }}>Browse items and preview them in 3D/AR.</p>
+              <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem' }}>Browse items and preview them in 3D/AR.</p>
             </div>
           </div>
         </Link>
@@ -140,7 +140,7 @@ const Home = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}><Layers size={20} />
             <div>
               <h3>Saved Designs</h3>
-              <p style={{ color: '#AAAABC', marginTop: '0.5rem' }}>Open the same saved layouts used by the app.</p>
+              <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem' }}>Open the same saved layouts used by the app.</p>
             </div>
           </div>
         </Link>
@@ -148,7 +148,7 @@ const Home = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}><DollarSign size={20} />
             <div>
               <h3>Budget Planner</h3>
-              <p style={{ color: '#AAAABC', marginTop: '0.5rem' }}>Update your target budget in the shared backend.</p>
+              <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem' }}>Update your target budget in the shared backend.</p>
             </div>
           </div>
         </Link>
@@ -156,7 +156,7 @@ const Home = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}><User size={20} />
             <div>
               <h3>My Profile</h3>
-              <p style={{ color: '#AAAABC', marginTop: '0.5rem' }}>See account details and saved layout stats.</p>
+              <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem' }}>See account details and saved layout stats.</p>
             </div>
           </div>
         </Link>

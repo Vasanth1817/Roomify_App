@@ -7,8 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync-deps": "node scripts/sync-deps.mjs"
   },
+  "preinstall": "node scripts/sync-deps.mjs",
   "dependencies": {
     "@google/model-viewer": "^4.3.0",
     "framer-motion": "^12.40.0",

@@ -35,29 +35,29 @@ const Login = () => {
     <div className="page-shell" style={{ padding: '3rem 1.5rem' }}>
       <div className="auth-card glass-panel" style={{ maxWidth: '520px', margin: '0 auto', padding: '2rem' }}>
         <h1 style={{ marginBottom: '1rem' }}>Welcome Back</h1>
-        <p style={{ color: '#AAAABC', marginBottom: '2rem' }}>Log in with your Roomify account to continue designing and saving rooms.</p>
+        <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>Log in with your Roomify account to continue designing and saving rooms.</p>
         {error && <div style={{ marginBottom: '1rem', color: '#FF6B6B' }}>{error}</div>}
 
         <form onSubmit={handleSubmit}>
-          <label style={{ display: 'block', marginBottom: '0.75rem', color: '#AAAABC' }}>
+          <label style={{ display: 'block', marginBottom: '0.75rem', color: 'var(--text-muted)' }}>
             Email
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
-              style={{ width: '100%', marginTop: '0.5rem', padding: '0.9rem 1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.12)', background: '#111', color: 'white' }}
+              style={{ width: '100%', marginTop: '0.5rem', padding: '0.9rem 1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.12)', background: 'var(--surface)', color: 'var(--text-main)' }}
             />
           </label>
 
-          <label style={{ display: 'block', marginBottom: '1rem', color: '#AAAABC' }}>
+          <label style={{ display: 'block', marginBottom: '1rem', color: 'var(--text-muted)' }}>
             Password
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
-              style={{ width: '100%', marginTop: '0.5rem', padding: '0.9rem 1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.12)', background: '#111', color: 'white' }}
+              style={{ width: '100%', marginTop: '0.5rem', padding: '0.9rem 1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.12)', background: 'var(--surface)', color: 'var(--text-main)' }}
             />
           </label>
 
@@ -66,7 +66,7 @@ const Login = () => {
           </button>
         </form>
 
-        <p style={{ marginTop: '1.5rem', color: '#AAAABC', textAlign: 'center' }}>
+        <p style={{ marginTop: '1.5rem', color: 'var(--text-muted)', textAlign: 'center' }}>
           Don't have an account?{' '}
           <Link to="/register" style={{ color: '#8B4DFA' }}>
             Create one now.

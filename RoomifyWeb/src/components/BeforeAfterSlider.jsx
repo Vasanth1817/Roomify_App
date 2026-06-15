@@ -85,7 +85,7 @@ const BeforeAfterSlider = ({ beforeImage, afterImage }) => {
           justifyContent: 'center',
           boxShadow: '0 0 10px rgba(0,0,0,0.5)'
         }}>
-          <span style={{ color: 'white', fontSize: '12px' }}>↔</span>
+          <span style={{ color: 'var(--text-main)', fontSize: '12px' }}>↔</span>
         </div>
       </div>
     </div>
