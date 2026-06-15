@@ -1,0 +1,149 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#000000" tools:context=".ArCameraActivity" android:id="@+id/main">
+    <!--  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+             LAYER 1 â€“ CAMERA PREVIEW (full screen)
+             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•  -->
+    <androidx.camera.view.PreviewView android:id="@+id/cameraPreview" android:layout_width="0dp" android:layout_height="0dp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+    <!--  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+             LAYER 2 â€“ AR SURFACE GRID OVERLAY
+             (shows when surface detected)
+             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•  -->
+    <FrameLayout android:id="@+id/arOverlayContainer" android:layout_width="0dp" android:layout_height="0dp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <!--  Surface detection dots scattered on floor plane  -->
+        <View android:layout_width="8dp" android:layout_height="8dp" android:layout_gravity="center" android:layout_marginBottom="60dp" android:layout_marginStart="30dp" android:background="@drawable/bg_surface_dot"/>
+        <View android:layout_width="6dp" android:layout_height="6dp" android:layout_gravity="center" android:layout_marginBottom="40dp" android:layout_marginEnd="50dp" android:background="@drawable/bg_surface_dot"/>
+        <View android:layout_width="8dp" android:layout_height="8dp" android:layout_gravity="center" android:layout_marginBottom="80dp" android:layout_marginEnd="20dp" android:background="@drawable/bg_surface_dot"/>
+        <View android:layout_width="6dp" android:layout_height="6dp" android:layout_gravity="center" android:layout_marginBottom="100dp" android:layout_marginStart="60dp" android:background="@drawable/bg_surface_dot"/>
+        <View android:layout_width="8dp" android:layout_height="8dp" android:layout_gravity="center" android:layout_marginBottom="120dp" android:background="@drawable/bg_surface_dot"/>
+        <!--  AR viewfinder reticle  -->
+        <ImageView android:id="@+id/arReticle" android:layout_width="160dp" android:layout_height="120dp" android:layout_gravity="center" android:layout_marginBottom="80dp" android:src="@drawable/ic_surface_scan" android:alpha="0.9"/>
+    </FrameLayout>
+    <!--  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+             LAYER 3 â€“ TOP CONTROL BAR
+             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•  -->
+    <LinearLayout android:id="@+id/topBar" android:layout_width="0dp" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_top_bar" android:paddingTop="42dp" android:paddingBottom="12dp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingStart="16dp" android:paddingEnd="16dp" android:gravity="center_vertical">
+            <!--  Close/Back  -->
+            <FrameLayout android:id="@+id/btnClose" android:layout_width="40dp" android:layout_height="40dp" android:background="@drawable/bg_icon_btn" >
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center" android:src="@drawable/ic_arrow_back" android:tint="#FFFFFF"/>
+            </FrameLayout>
+            <!--  Session title  -->
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:layout_marginStart="12dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AR DESIGN MODE" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold" android:letterSpacing="0.1" android:fontFamily="@font/poppins_bold"/>
+                <!--  Surface status  -->
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                    <View android:layout_width="6dp" android:layout_height="6dp" android:background="@drawable/bg_surface_dot" android:layout_marginEnd="5dp"/>
+                    <TextView android:id="@+id/tvSurfaceStatus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Surface detected" android:textColor="#88FF88" android:textSize="11sp" android:fontFamily="@font/poppins_regular"/>
+                </LinearLayout>
+            </LinearLayout>
+            <!--  Undo  -->
+            <FrameLayout android:id="@+id/btnUndo" android:layout_width="40dp" android:layout_height="40dp" android:background="@drawable/bg_icon_btn" android:layout_marginEnd="8dp">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center" android:src="@drawable/ic_undo"/>
+            </FrameLayout>
+            <!--  Redo  -->
+            <FrameLayout android:id="@+id/btnRedo" android:layout_width="40dp" android:layout_height="40dp" android:background="@drawable/bg_icon_btn">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center" android:src="@drawable/ic_redo"/>
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <!--  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+             LAYER 4 â€“ RIGHT SIDE TOOL RAIL
+             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•  -->
+    <LinearLayout android:id="@+id/rightToolRail" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center_horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:paddingStart="8dp" android:paddingEnd="8dp" android:background="@drawable/bg_glass_pill" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@id/bottomSheet" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintVertical_bias="0.55" android:layout_marginEnd="12dp">
+        <!--  Rotate  -->
+        <FrameLayout android:id="@+id/toolRotate" android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_btn_purple" android:layout_marginBottom="10dp">
+            <ImageView android:layout_width="22dp" android:layout_height="22dp" android:layout_gravity="center" android:src="@drawable/ic_rotate3d"/>
+        </FrameLayout>
+        <!--  Scale  -->
+        <FrameLayout android:id="@+id/toolScale" android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_btn" android:layout_marginBottom="10dp">
+            <ImageView android:layout_width="22dp" android:layout_height="22dp" android:layout_gravity="center" android:src="@drawable/ic_scale"/>
+        </FrameLayout>
+        <!--  Measure  -->
+        <FrameLayout android:id="@+id/toolMeasure" android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_btn" android:layout_marginBottom="10dp">
+            <ImageView android:layout_width="22dp" android:layout_height="22dp" android:layout_gravity="center" android:src="@drawable/ic_measure"/>
+        </FrameLayout>
+        <!--  Light  -->
+        <FrameLayout android:id="@+id/toolLight" android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_btn" android:layout_marginBottom="10dp">
+            <ImageView android:layout_width="22dp" android:layout_height="22dp" android:layout_gravity="center" android:src="@drawable/ic_light"/>
+        </FrameLayout>
+        <!--  Screenshot  -->
+        <FrameLayout android:id="@+id/toolScreenshot" android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_btn">
+            <ImageView android:layout_width="22dp" android:layout_height="22dp" android:layout_gravity="center" android:src="@drawable/ic_screenshot"/>
+        </FrameLayout>
+    </LinearLayout>
+    <!--  ════════════════════════════════════════════════ 
+             LAYER 5 – DELETE / DESELECT TOAST
+             (shown when item selected)
+             ════════════════════════════════════════════════   -->
+    <LinearLayout android:id="@+id/selectedItemBar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="16dp" android:paddingEnd="16dp" android:paddingTop="10dp" android:paddingBottom="10dp" android:background="@drawable/bg_glass_pill" android:visibility="visible" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@id/bottomSheet" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintVertical_bias="0.82" android:layout_marginStart="60dp" android:layout_marginEnd="60dp">
+        <!--  Selected item name  -->
+        <TextView android:id="@+id/tvSelectedItem" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Modern Sofa • Selected" android:textColor="#FFFFFF" android:textSize="13sp" android:fontFamily="@font/poppins_medium"/>
+        <!--  Delete  -->
+        <FrameLayout android:id="@+id/btnDeleteItem" android:layout_width="36dp" android:layout_height="36dp" android:background="@drawable/bg_icon_btn" android:layout_marginStart="12dp">
+            <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center" android:src="@drawable/ic_trash"/>
+        </FrameLayout>
+    </LinearLayout>
+    <!--  ════════════════════════════════════════════════ 
+             LAYER 6 – BOTTOM SHEET (furniture picker)
+             ════════════════════════════════════════════════   -->
+    <LinearLayout android:id="@+id/bottomSheet" android:layout_width="0dp" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_bottom_sheet" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <!--  Drag handle  -->
+        <View android:layout_width="40dp" android:layout_height="4dp" android:background="@drawable/bg_drag_handle" android:layout_gravity="center_horizontal" android:layout_marginTop="10dp" android:layout_marginBottom="14dp"/>
+        <!--  Category chips row  -->
+        <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:scrollbars="none" android:layout_marginBottom="14dp" android:paddingStart="16dp" android:paddingEnd="16dp">
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+                <!--  All (active)  -->
+                <TextView android:id="@+id/chipAll" android:layout_width="wrap_content" android:layout_height="34dp" android:text="All" android:textColor="#FFFFFF" android:textSize="12sp" android:gravity="center" android:paddingStart="16dp" android:paddingEnd="16dp" android:background="@drawable/bg_category_active" android:layout_marginEnd="8dp" android:fontFamily="@font/poppins_bold"/>
+                <TextView android:id="@+id/chipSofa" android:layout_width="wrap_content" android:layout_height="34dp" android:text="Sofas" android:textColor="#6C2BD9" android:textSize="12sp" android:gravity="center" android:paddingStart="16dp" android:paddingEnd="16dp" android:background="@drawable/bg_category_inactive" android:layout_marginEnd="8dp" android:fontFamily="@font/poppins_medium"/>
+                <TextView android:id="@+id/chipChair" android:layout_width="wrap_content" android:layout_height="34dp" android:text="Chairs" android:textColor="#6C2BD9" android:textSize="12sp" android:gravity="center" android:paddingStart="16dp" android:paddingEnd="16dp" android:background="@drawable/bg_category_inactive" android:layout_marginEnd="8dp" android:fontFamily="@font/poppins_medium"/>
+                <TextView android:id="@+id/chipTable" android:layout_width="wrap_content" android:layout_height="34dp" android:text="Tables" android:textColor="#6C2BD9" android:textSize="12sp" android:gravity="center" android:paddingStart="16dp" android:paddingEnd="16dp" android:background="@drawable/bg_category_inactive" android:layout_marginEnd="8dp" android:fontFamily="@font/poppins_medium"/>
+                <TextView android:id="@+id/chipLighting" android:layout_width="wrap_content" android:layout_height="34dp" android:text="Lighting" android:textColor="#6C2BD9" android:textSize="12sp" android:gravity="center" android:paddingStart="16dp" android:paddingEnd="16dp" android:background="@drawable/bg_category_inactive" android:layout_marginEnd="8dp" android:fontFamily="@font/poppins_medium"/>
+                <TextView android:id="@+id/chipStorage" android:layout_width="wrap_content" android:layout_height="34dp" android:text="Storage" android:textColor="#6C2BD9" android:textSize="12sp" android:gravity="center" android:paddingStart="16dp" android:paddingEnd="16dp" android:background="@drawable/bg_category_inactive" android:fontFamily="@font/poppins_medium"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+        <!--  Furniture horizontal scroll list  -->
+        <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:scrollbars="none" android:paddingStart="16dp" android:paddingEnd="16dp" android:layout_marginBottom="14dp">
+            <LinearLayout android:id="@+id/furnitureList" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+                <!--  Item 1: Modern Sofa (selected)  -->
+                <LinearLayout android:id="@+id/itemSofa" android:layout_width="100dp" android:layout_height="120dp" android:orientation="vertical" android:background="@drawable/bg_furniture_card_selected" android:padding="8dp" android:layout_marginEnd="10dp" android:gravity="center_horizontal">
+                    <ImageView android:id="@+id/imgFurniture1" android:layout_width="match_parent" android:layout_height="68dp" android:background="@drawable/bg_furniture_img" android:scaleType="centerCrop" android:layout_marginBottom="6dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Modern Sofa" android:textColor="#1A1A2E" android:textSize="10sp" android:textStyle="bold" android:gravity="center" android:fontFamily="@font/poppins_bold"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₹1,299" android:textColor="#6C2BD9" android:textSize="10sp" android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+                <!--  Item 2: Lounge Chair  -->
+                <LinearLayout android:id="@+id/itemChair" android:layout_width="100dp" android:layout_height="120dp" android:orientation="vertical" android:background="@drawable/bg_furniture_card" android:padding="8dp" android:layout_marginEnd="10dp" android:gravity="center_horizontal">
+                    <ImageView android:id="@+id/imgFurniture2" android:layout_width="match_parent" android:layout_height="68dp" android:background="@drawable/bg_furniture_img" android:scaleType="centerCrop" android:layout_marginBottom="6dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lounge Chair" android:textColor="#1A1A2E" android:textSize="10sp" android:textStyle="bold" android:gravity="center" android:fontFamily="@font/poppins_bold"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₹649" android:textColor="#6C2BD9" android:textSize="10sp" android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+                <!--  Item 3: Coffee Table  -->
+                <LinearLayout android:id="@+id/itemTable" android:layout_width="100dp" android:layout_height="120dp" android:orientation="vertical" android:background="@drawable/bg_furniture_card" android:padding="8dp" android:layout_marginEnd="10dp" android:gravity="center_horizontal">
+                    <ImageView android:id="@+id/imgFurniture3" android:layout_width="match_parent" android:layout_height="68dp" android:background="@drawable/bg_furniture_img" android:scaleType="centerCrop" android:layout_marginBottom="6dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Coffee Table" android:textColor="#1A1A2E" android:textSize="10sp" android:textStyle="bold" android:gravity="center" android:fontFamily="@font/poppins_bold"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₹389" android:textColor="#6C2BD9" android:textSize="10sp" android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+                <!--  Item 4: Floor Lamp  -->
+                <LinearLayout android:id="@+id/itemLamp" android:layout_width="100dp" android:layout_height="120dp" android:orientation="vertical" android:background="@drawable/bg_furniture_card" android:padding="8dp" android:layout_marginEnd="10dp" android:gravity="center_horizontal">
+                    <ImageView android:id="@+id/imgFurniture4" android:layout_width="match_parent" android:layout_height="68dp" android:background="@drawable/bg_furniture_img" android:scaleType="centerCrop" android:layout_marginBottom="6dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Floor Lamp" android:textColor="#1A1A2E" android:textSize="10sp" android:textStyle="bold" android:gravity="center" android:fontFamily="@font/poppins_bold"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₹229" android:textColor="#6C2BD9" android:textSize="10sp" android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+                <!--  Item 5: Bookshelf  -->
+                <LinearLayout android:id="@+id/itemShelf" android:layout_width="100dp" android:layout_height="120dp" android:orientation="vertical" android:background="@drawable/bg_furniture_card" android:padding="8dp" android:gravity="center_horizontal">
+                    <ImageView android:id="@+id/imgFurniture5" android:layout_width="match_parent" android:layout_height="68dp" android:background="@drawable/bg_furniture_img" android:scaleType="centerCrop" android:layout_marginBottom="6dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Bookshelf" android:textColor="#1A1A2E" android:textSize="10sp" android:textStyle="bold" android:gravity="center" android:fontFamily="@font/poppins_bold"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₹499" android:textColor="#6C2BD9" android:textSize="10sp" android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
+        <!--  Bottom action row: Place + item count  -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingStart="16dp" android:paddingEnd="16dp" android:paddingBottom="28dp" android:gravity="center_vertical">
+            <!--  Items placed count badge  -->
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginEnd="12dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PLACED" android:textColor="#AAAABC" android:textSize="9sp" android:letterSpacing="0.1" android:fontFamily="@font/poppins_medium"/>
+                <TextView android:id="@+id/tvItemsPlaced" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3 items" android:textColor="#1A1A2E" android:textSize="16sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+            </LinearLayout>
+            <!--  Place in Room button  -->
+            <Button android:id="@+id/btnPlaceInRoom" android:layout_width="0dp" android:layout_height="52dp" android:layout_weight="1" android:text="＋ Place in Room" android:textColor="#FFFFFF" android:textSize="14sp" android:background="@drawable/bg_place_btn" android:fontFamily="@font/poppins_bold"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

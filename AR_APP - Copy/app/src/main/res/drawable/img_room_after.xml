@@ -1,0 +1,64 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="180dp"
+    android:height="220dp"
+    android:viewportWidth="180"
+    android:viewportHeight="220">
+    <!-- Wall - warm white -->
+    <path android:fillColor="#F0EDE8" android:pathData="M0,0h180v165H0z"/>
+    <!-- Floor - warm wood -->
+    <path android:fillColor="#C8A87A" android:pathData="M0,155h180v65H0z"/>
+    <!-- Floor planks lines -->
+    <path android:strokeColor="#B89860" android:strokeWidth="1"
+        android:fillColor="#00000000"
+        android:pathData="M0,165h180M0,175h180M0,185h180M0,195h180M0,205h180"/>
+    <!-- Window left -->
+    <path android:fillColor="#B8CCE0" android:pathData="M5,10h55v130H5z"/>
+    <path android:strokeColor="#D0D0C8" android:strokeWidth="1.5"
+        android:fillColor="#00000000"
+        android:pathData="M5,10h55v130H5zM32,10v130M5,75h55"/>
+    <!-- Curtain left sheer -->
+    <path android:fillColor="#E8E0D0" android:pathData="M3,8h8v134H3z"/>
+    <!-- Right wall section -->
+    <path android:fillColor="#EDE8E0" android:pathData="M65,0h115v155H65z"/>
+    <!-- Art painting on right wall -->
+    <path android:fillColor="#8B6BB8" android:pathData="M90,15h70v80H90z"/>
+    <!-- Art - purple abstract blob -->
+    <path android:fillColor="#6B4A9A" android:pathData="M110,25 Q125,20 140,30 Q155,45 148,60 Q140,75 125,78 Q108,75 100,60 Q95,45 110,25z"/>
+    <!-- Art highlight -->
+    <path android:fillColor="#C088E8" android:pathData="M118,32 Q128,28 138,36 Q132,30 118,32z"/>
+    <!-- Art frame -->
+    <path android:strokeColor="#5A3A7A" android:strokeWidth="2"
+        android:fillColor="#00000000"
+        android:pathData="M90,15h70v80H90z"/>
+    <!-- Purple sofa -->
+    <path android:fillColor="#7B3FA8" android:pathData="M40,120h130v38H40z"/>
+    <!-- Sofa back -->
+    <path android:fillColor="#8B4FB8" android:pathData="M40,105h130v18H40z"/>
+    <!-- Sofa left arm -->
+    <path android:fillColor="#6A3098" android:pathData="M38,105h10v38H38z"/>
+    <!-- Sofa right arm -->
+    <path android:fillColor="#6A3098" android:pathData="M162,105h10v38H162z"/>
+    <!-- Sofa cushions dividers -->
+    <path android:strokeColor="#9860C8" android:strokeWidth="1.5"
+        android:fillColor="#00000000"
+        android:pathData="M88,105v53M130,105v53"/>
+    <!-- Sofa legs -->
+    <path android:fillColor="#4A2070" android:pathData="M48,158h8v10H48zM80,158h8v10H80zM120,158h8v10H120zM152,158h8v10H152z"/>
+    <!-- Rug -->
+    <path android:fillColor="#D4A8B8" android:pathData="M30,155h140v20H30z"/>
+    <path android:strokeColor="#C090A0" android:strokeWidth="1"
+        android:fillColor="#00000000"
+        android:pathData="M35,158h130M35,170h130"/>
+    <!-- Throw pillow left -->
+    <path android:fillColor="#E8C8F0" android:pathData="M50,108h28v14H50z"/>
+    <!-- Throw pillow right -->
+    <path android:fillColor="#C8A0D8" android:pathData="M132,108h28v14H132z"/>
+    <!-- Floor lamp -->
+    <path android:fillColor="#8A8080" android:pathData="M168,80h4v78H168z"/>
+    <path android:fillColor="#F0E8D0" android:pathData="M158,72h24v12H158z"/>
+    <!-- Small side table -->
+    <path android:fillColor="#B89870" android:pathData="M15,130h22v28H15z"/>
+    <path android:fillColor="#C8A880" android:pathData="M13,126h26v6H13z"/>
+    <!-- Vase on table -->
+    <path android:fillColor="#9B6BAA" android:pathData="M20,110 Q26,108 30,115 L28,126 L18,126 L16,115 Q20,108 20,110z"/>
+</vector>

@@ -1,0 +1,252 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#F8F7FC" tools:context=".DesignThemesActivity" android:id="@+id/main">
+    <!--  ===== SCROLL CONTENT =====  -->
+    <ScrollView android:id="@+id/scrollView" android:layout_width="0dp" android:layout_height="0dp" android:scrollbars="none" android:fillViewport="true" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@id/btnApplyTheme" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="16dp">
+            <!--  ===== TOP BAR =====  -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingStart="16dp" android:paddingEnd="16dp" android:paddingTop="16dp" android:paddingBottom="12dp" android:gravity="center_vertical">
+                <ImageView android:id="@+id/btnBack" android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/ic_arrow_back" android:tint="#6C2BD9"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Design Themes" android:textColor="#6C2BD9" android:textSize="20sp" android:textStyle="bold" android:gravity="center" android:fontFamily="@font/poppins_bold"/>
+            </LinearLayout>
+            <!--  ===== CURRENT ACTIVE THEME CARD =====  -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:layout_marginBottom="24dp" app:cardCornerRadius="16dp" app:cardElevation="0dp">
+                <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_active_theme_card" android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                        <!--  Label  -->
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CURRENT ACTIVE THEME" android:textColor="#D8C0FF" android:textSize="10sp" android:letterSpacing="0.1" android:layout_marginBottom="6dp" android:fontFamily="@font/poppins_medium"/>
+                        <!--  Theme name  -->
+                        <TextView android:id="@+id/tvActiveThemeName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Modern Minimalist" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold" android:layout_marginBottom="4dp" android:fontFamily="@font/poppins_bold"/>
+                        <!--  Theme tagline  -->
+                        <TextView android:id="@+id/tvActiveThemeTagline" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sleek lines and monochromatic purity" android:textColor="#D8C0FF" android:textSize="12sp" android:lineSpacingMultiplier="1.3" android:fontFamily="@font/poppins_regular"/>
+                    </LinearLayout>
+                    <!--  White check circle badge (top-right)  -->
+                    <FrameLayout android:layout_width="32dp" android:layout_height="32dp" android:layout_gravity="top|end" android:background="@drawable/bg_check_white_circle">
+                        <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_gravity="center" android:src="@drawable/ic_check_purple"/>
+                    </FrameLayout>
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+            <!--  ===== AVAILABLE THEMES HEADER =====  -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Available Themes" android:textColor="#1A1A2E" android:textSize="17sp" android:textStyle="bold" android:layout_marginStart="16dp" android:layout_marginBottom="12dp" android:fontFamily="@font/poppins_bold"/>
+            <!--  ===== THEME LIST =====  -->
+            <!--  Theme Item 1: Scandinavian  -->
+            <androidx.cardview.widget.CardView android:id="@+id/cardTheme1" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:layout_marginBottom="10dp" app:cardCornerRadius="14dp" app:cardElevation="1dp" app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="12dp" android:gravity="center_vertical">
+                    <!--  Theme image (loaded from DB)  -->
+                    <ImageView android:id="@+id/imgTheme1" android:layout_width="64dp" android:layout_height="60dp" android:background="@drawable/bg_theme_image_placeholder" android:scaleType="centerCrop" android:clipToOutline="true" android:layout_marginEnd="14dp"/>
+                    <!--  Text + colour dots  -->
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Scandinavian" android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Warm wood &amp; airy..." android:textColor="#888899" android:textSize="12sp" android:layout_marginBottom="6dp" android:fontFamily="@font/poppins_regular"/>
+                        <!--  Colour palette dots  -->
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/bg_dot_grey" android:layout_marginEnd="4dp"/>
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/bg_dot_green"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <!--  Radio button  -->
+                    <RadioButton android:id="@+id/radioTheme1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:buttonTint="#6C2BD9" android:clickable="false" android:focusable="false" android:checked="false"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!--  Theme Item 2: Industrial  -->
+            <androidx.cardview.widget.CardView android:id="@+id/cardTheme2" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:layout_marginBottom="10dp" app:cardCornerRadius="14dp" app:cardElevation="1dp" app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="12dp" android:gravity="center_vertical">
+                    <ImageView android:id="@+id/imgTheme2" android:layout_width="64dp" android:layout_height="60dp" android:background="@drawable/bg_theme_image_placeholder" android:scaleType="centerCrop" android:clipToOutline="true" android:layout_marginEnd="14dp"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Industrial" android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Raw metals &amp; exposed..." android:textColor="#888899" android:textSize="12sp" android:layout_marginBottom="6dp" android:fontFamily="@font/poppins_regular"/>
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/bg_dot_dark" android:layout_marginEnd="4dp"/>
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/bg_dot_brown" android:layout_marginEnd="4dp"/>
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/bg_dot_red"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <RadioButton android:id="@+id/radioTheme2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:buttonTint="#6C2BD9" android:clickable="false" android:focusable="false" android:checked="false"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!--  Theme Item 3: Bohemian  -->
+            <androidx.cardview.widget.CardView android:id="@+id/cardTheme3" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:layout_marginBottom="10dp" app:cardCornerRadius="14dp" app:cardElevation="1dp" app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="12dp" android:gravity="center_vertical">
+                    <ImageView android:id="@+id/imgTheme3" android:layout_width="64dp" android:layout_height="60dp" android:background="@drawable/bg_theme_image_placeholder" android:scaleType="centerCrop" android:clipToOutline="true" android:layout_marginEnd="14dp"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Bohemian" android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Eclectic patterns &amp; plants" android:textColor="#888899" android:textSize="12sp" android:layout_marginBottom="6dp" android:fontFamily="@font/poppins_regular"/>
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/bg_dot_green" android:layout_marginEnd="4dp"/>
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/bg_dot_orange" android:layout_marginEnd="4dp"/>
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/bg_dot_red"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <RadioButton android:id="@+id/radioTheme3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:buttonTint="#6C2BD9" android:clickable="false" android:focusable="false" android:checked="false"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!--  Theme Item 4: Contemporary  -->
+            <androidx.cardview.widget.CardView android:id="@+id/cardTheme4" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:layout_marginBottom="10dp" app:cardCornerRadius="14dp" app:cardElevation="1dp" app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="12dp" android:gravity="center_vertical">
+                    <ImageView android:id="@+id/imgTheme4" android:layout_width="64dp" android:layout_height="60dp" android:background="@drawable/bg_theme_image_placeholder" android:scaleType="centerCrop" android:clipToOutline="true" android:layout_marginEnd="14dp"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Contemporary" android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Bold curves &amp; marble..." android:textColor="#888899" android:textSize="12sp" android:layout_marginBottom="6dp" android:fontFamily="@font/poppins_regular"/>
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/bg_dot_grey" android:layout_marginEnd="4dp"/>
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/bg_dot_blue"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <RadioButton android:id="@+id/radioTheme4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:buttonTint="#6C2BD9" android:clickable="false" android:focusable="false" android:checked="false"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!--  Theme Item 5: Mid-Century Modern  -->
+            <androidx.cardview.widget.CardView android:id="@+id/cardTheme5" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:layout_marginBottom="10dp" app:cardCornerRadius="14dp" app:cardElevation="1dp" app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="12dp" android:gravity="center_vertical">
+                    <ImageView android:id="@+id/imgTheme5" android:layout_width="64dp" android:layout_height="60dp" android:background="@drawable/bg_theme_image_placeholder" android:scaleType="centerCrop" android:clipToOutline="true" android:layout_marginEnd="14dp"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mid-Century Modern" android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Iconic wood &amp; retro vibes" android:textColor="#888899" android:textSize="12sp" android:layout_marginBottom="6dp" android:fontFamily="@font/poppins_regular"/>
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/bg_dot_orange" android:layout_marginEnd="4dp"/>
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/bg_dot_teal" android:layout_marginEnd="4dp"/>
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/bg_dot_brown"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <RadioButton android:id="@+id/radioTheme5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:buttonTint="#6C2BD9" android:clickable="false" android:focusable="false" android:checked="false"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+    <!-- ===== BOTTOM NAVIGATION ===== -->
+    <LinearLayout
+        android:id="@+id/bottomNavBar"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_bottom_nav"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Home -->
+        <LinearLayout
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_home"
+                android:tint="#AAAABC" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textColor="#AAAABC"
+                android:textSize="10sp"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/poppins_regular" />
+        </LinearLayout>
+
+        <!-- Explore (active) -->
+        <LinearLayout
+            android:id="@+id/navExplore"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <FrameLayout
+                android:layout_width="48dp"
+                android:layout_height="34dp"
+                android:background="@drawable/bg_nav_active">
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_explore"
+                    android:tint="#6C2BD9" />
+            </FrameLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Explore"
+                android:textColor="#6C2BD9"
+                android:textSize="10sp"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/poppins_medium" />
+        </LinearLayout>
+
+        <!-- Saved -->
+        <LinearLayout
+            android:id="@+id/navSaved"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_bookmark"
+                android:tint="#AAAABC" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Saved"
+                android:textColor="#AAAABC"
+                android:textSize="10sp"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/poppins_regular" />
+        </LinearLayout>
+
+        <!-- Alerts -->
+        <LinearLayout
+            android:id="@+id/navAlerts"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_notifications"
+                android:tint="#AAAABC" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alerts"
+                android:textColor="#AAAABC"
+                android:textSize="10sp"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/poppins_regular" />
+        </LinearLayout>
+
+        <!-- Profile -->
+        <LinearLayout
+            android:id="@+id/navProfile2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_person"
+                android:tint="#AAAABC" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:textColor="#AAAABC"
+                android:textSize="10sp"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/poppins_regular" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--  ===== APPLY THEME BUTTON (pinned bottom) =====  -->
+    <Button android:id="@+id/btnApplyTheme" android:layout_width="0dp" android:layout_height="54dp" android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:layout_marginBottom="12dp" android:text="✦ Apply Theme to AR" android:textColor="#FFFFFF" android:textSize="15sp" android:background="@drawable/bg_apply_button" app:backgroundTint="#6C2BD9" android:fontFamily="@font/poppins_bold" app:layout_constraintBottom_toTopOf="@id/bottomNavBar" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

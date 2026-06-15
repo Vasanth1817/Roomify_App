@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4EEF8"
+    tools:context=".SplashScreen">
+
+    <!-- Logo -->
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/homee" />
+
+    <!-- App Name -->
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Roomify"
+        android:textColor="#6C2BD9"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_extrabold"/>
+
+    <!-- Subtitle -->
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Design your space, track your budget."
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <!-- Room Image -->
+
+    <ImageView
+        android:id="@+id/roomImage"
+        android:layout_width="340dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/subtitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/room" />
+
+</RelativeLayout>

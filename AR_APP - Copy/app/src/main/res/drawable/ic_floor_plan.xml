@@ -1,0 +1,32 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="90dp"
+    android:viewportWidth="100"
+    android:viewportHeight="90">
+
+    <!-- Main large room (bottom-left) -->
+    <path android:strokeColor="#CCFFFFFF" android:strokeWidth="2.5"
+        android:fillColor="#33FFFFFF"
+        android:pathData="M5,45 L5,85 L65,85 L65,45 Z"/>
+
+    <!-- Upper room (top-right) -->
+    <path android:strokeColor="#CCFFFFFF" android:strokeWidth="2.5"
+        android:fillColor="#22FFFFFF"
+        android:pathData="M35,5 L35,48 L95,48 L95,5 Z"/>
+
+    <!-- Inner wall line (divider) -->
+    <path android:strokeColor="#88FFFFFF" android:strokeWidth="1.5"
+        android:fillColor="#00000000"
+        android:pathData="M35,45 L65,45"/>
+
+    <!-- Door gap left room -->
+    <path android:strokeColor="#CCFFFFFF" android:strokeWidth="2.5"
+        android:fillColor="#00000000"
+        android:pathData="M5,62 L5,72"/>
+
+    <!-- Door gap upper room -->
+    <path android:strokeColor="#CCFFFFFF" android:strokeWidth="2.5"
+        android:fillColor="#00000000"
+        android:pathData="M55,5 L65,5"/>
+
+</vector>

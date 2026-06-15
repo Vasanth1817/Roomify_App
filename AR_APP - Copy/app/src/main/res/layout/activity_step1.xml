@@ -1,0 +1,75 @@
+﻿<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/main" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#F8F7FC" tools:context=".Step1Activity">
+    <!--  ===== TOP HALF: Teal gradient =====  -->
+    <FrameLayout android:id="@+id/topSection" android:layout_width="0dp" android:layout_height="0dp" android:background="@drawable/bg_tutorial_teal" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@id/bottomCard" app:layout_constraintHeight_percent="0.52">
+        <!--  Skip button top right  -->
+        <TextView
+            android:id="@+id/btnSkip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="32dp"
+            android:text="SKIP"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:background="@drawable/bg_skip_teal"
+            android:fontFamily="@font/poppins_bold"
+            android:letterSpacing="0.08"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center">
+            <!--  Scan brackets + floor plan  -->
+            <FrameLayout android:layout_width="200dp" android:layout_height="180dp" >
+                <!--  Corner scan brackets  -->
+                <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/ic_scan_frame" android:scaleType="fitXY"/>
+                <!--  Floor plan centred inside frame  -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center">
+                    <ImageView android:layout_width="100dp" android:layout_height="90dp" android:src="@drawable/ic_floor_plan" android:scaleType="fitCenter"/>
+                </LinearLayout>
+            </FrameLayout>
+            <!--  SCANNING... label  -->
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                <View android:layout_width="6dp" android:layout_height="6dp" android:background="@drawable/bg_scan_dot" android:layout_marginEnd="6dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SCANNING..." android:textColor="#CCFFFFFF" android:textSize="11sp" android:letterSpacing="0.14" android:fontFamily="@font/poppins_medium"/>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+    <!--  ===== BOTTOM CARD =====  -->
+    <androidx.cardview.widget.CardView android:id="@+id/bottomCard" android:layout_width="0dp" android:layout_height="0dp" app:cardCornerRadius="28dp" app:cardElevation="8dp" app:cardBackgroundColor="#FFFFFF" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHeight_percent="0.48">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:paddingStart="28dp" android:paddingEnd="28dp" android:paddingTop="28dp" android:paddingBottom="28dp">
+            <!--  STEP 1 label  -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="STEP 1" android:textColor="#6C2BD9" android:textSize="11sp" android:letterSpacing="0.12" android:layout_marginBottom="8dp" android:fontFamily="@font/poppins_bold"/>
+            <!--  Main headline  -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Scan Your Room" android:textColor="#1A1A2E" android:textSize="24sp" android:textStyle="bold" android:layout_marginBottom="10dp" android:fontFamily="@font/poppins_bold"/>
+            <!--  Subtitle  -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Slowly pan your phone around the room. The app detects surfaces automatically." android:textColor="#888899" android:textSize="13sp" android:lineSpacingMultiplier="1.5" android:layout_marginBottom="18dp" android:fontFamily="@font/poppins_regular"/>
+            <!--  Pro Tip card  -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" app:cardCornerRadius="14dp" app:cardElevation="0dp" app:cardBackgroundColor="#F3EEFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="14dp" android:gravity="top">
+                    <!--  Icon circle  -->
+                    <FrameLayout android:layout_width="34dp" android:layout_height="34dp" android:background="@drawable/bg_protip_icon" android:layout_marginEnd="12dp">
+                        <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_gravity="center" android:src="@drawable/ic_lightbulb" android:tint="#6C2BD9"/>
+                    </FrameLayout>
+                    <!--  Text  -->
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pro Tip" android:textColor="#6C2BD9" android:textSize="13sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Good lighting helps the AR engine map your floors and walls more accurately." android:textColor="#555566" android:textSize="12sp" android:lineSpacingMultiplier="1.4" android:fontFamily="@font/poppins_regular"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!--  Spacer  -->
+            <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+            <!--  Page dots: dot 1 inactive, dot 2 active, dots 3-4 inactive  -->
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="18dp">
+                <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_dot_inactive" android:layout_marginEnd="6dp"/>
+                <View android:layout_width="24dp" android:layout_height="8dp" android:background="@drawable/bg_dot_active" android:layout_marginEnd="6dp"/>
+                <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_dot_inactive" android:layout_marginEnd="6dp"/>
+                <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_dot_inactive"/>
+            </LinearLayout>
+            <!--  Next button  -->
+            <Button android:id="@+id/step2" android:layout_width="match_parent" android:layout_height="54dp" android:text="Next â†’" android:textColor="#FFFFFF" android:textSize="15sp" android:background="@drawable/bg_next_button" android:fontFamily="@font/poppins_bold"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

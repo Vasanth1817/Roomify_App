@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.AR_APP" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+    </style>
+
+    <style name="Theme.AR_APP" parent="Base.Theme.AR_APP" />
+
+</resources>

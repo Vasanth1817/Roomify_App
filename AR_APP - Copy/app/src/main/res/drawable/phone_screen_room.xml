@@ -1,0 +1,31 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp" android:height="160dp"
+    android:viewportWidth="120" android:viewportHeight="160">
+    <!-- Wall background - light sage green -->
+    <path android:fillColor="#B8C9A8" android:pathData="M0,0h120v130H0z"/>
+    <!-- Floor -->
+    <path android:fillColor="#C8A87A" android:pathData="M0,110h120v50H0z"/>
+    <!-- Large window -->
+    <path android:fillColor="#88BBD6" android:pathData="M20,10h80v90H20z"/>
+    <!-- Window frame cross -->
+    <path android:strokeColor="#D0D8C0" android:strokeWidth="2"
+        android:fillColor="#00000000" android:pathData="M60,10v90M20,55h80"/>
+    <!-- Curtains -->
+    <path android:fillColor="#A0B890" android:pathData="M15,10h10v90H15z"/>
+    <path android:fillColor="#A0B890" android:pathData="M95,10h10v90H95z"/>
+    <!-- Plant left -->
+    <path android:fillColor="#5A8A50" android:pathData="M5,70 Q15,50 25,70 Q15,55 5,70z"/>
+    <path android:fillColor="#4A7840" android:pathData="M10,75h8v30H10z"/>
+    <!-- Rug -->
+    <path android:fillColor="#D4A882" android:pathData="M20,115h80v20H20z"/>
+    <path android:strokeColor="#C49070" android:strokeWidth="1"
+        android:fillColor="#00000000" android:pathData="M25,118h70M25,132h70"/>
+    <!-- AR icon overlay in center -->
+    <path android:fillColor="#44FFFFFF"
+        android:pathData="M48,72 L60,65 L72,72 L72,86 L60,93 L48,86 Z"/>
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="2"
+        android:fillColor="#00000000"
+        android:pathData="M54,72v14M66,72v14M48,79h24"/>
+    <!-- "PICTURE TO CHAIR" text bar -->
+    <path android:fillColor="#CC000000" android:pathData="M10,140h100v15H10z"/>
+</vector>

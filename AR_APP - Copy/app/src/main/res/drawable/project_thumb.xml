@@ -1,0 +1,18 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="70dp"
+    android:height="60dp"
+    android:viewportWidth="70"
+    android:viewportHeight="60">
+    <!-- Room background -->
+    <path android:fillColor="#C4B5FD" android:pathData="M0,0h70v60H0z"/>
+    <!-- Floor -->
+    <path android:fillColor="#A78BFA" android:pathData="M0,40h70v20H0z"/>
+    <!-- Window -->
+    <path android:fillColor="#EDE9FE" android:pathData="M10,8h20v20H10z"/>
+    <path android:strokeColor="#7C3AED" android:strokeWidth="1"
+        android:pathData="M20,8v20M10,18h20" android:fillColor="#00000000"/>
+    <!-- Sofa -->
+    <path android:fillColor="#7C3AED" android:pathData="M30,32h30v10H30z"/>
+    <path android:fillColor="#6D28D9" android:pathData="M30,30h30v4H30z"/>
+    <path android:fillColor="#6D28D9" android:pathData="M30,30h4v12H30zM56,30h4v12H56z"/>
+</vector>

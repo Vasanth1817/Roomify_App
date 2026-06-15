@@ -1,0 +1,125 @@
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/main" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#F8F7FC" tools:context=".BudgetActivity">
+    <!--  ===== SCROLL AREA =====  -->
+    <ScrollView android:id="@+id/scrollView" android:layout_width="0dp" android:layout_height="0dp" android:scrollbars="none" android:fillViewport="true" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@id/btnSaveBudget" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="16dp">
+            <!--  ===== TOP BAR =====  -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingStart="20dp" android:paddingEnd="20dp" android:paddingTop="16dp" android:paddingBottom="8dp" android:gravity="center_vertical">
+                <!--  Back arrow  -->
+                <ImageView android:id="@+id/btnBack" android:layout_width="32dp" android:layout_height="32dp" android:src="@drawable/ic_arrow_back" android:tint="#6C2BD9" android:onClick="back" android:layout_marginEnd="8dp"/>
+                <!--  Title  -->
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Roomify" android:textColor="#6C2BD9" android:textSize="22sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+                <!--  Settings icon  -->
+                <ImageView android:id="@+id/btnSettings" android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/ic_settings" android:onClick="setting" android:tint="#6C2BD9"/>
+            </LinearLayout>
+            <!--  ===== PAGE HEADING =====  -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Budget Planning" android:textColor="#1A1A2E" android:textSize="22sp" android:textStyle="bold" android:layout_marginStart="20dp" android:layout_marginTop="8dp" android:fontFamily="@font/poppins_bold"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Set and manage your interior design spending." android:textColor="#888899" android:textSize="13sp" android:layout_marginStart="20dp" android:layout_marginTop="2dp" android:layout_marginBottom="18dp" android:fontFamily="@font/poppins_regular"/>
+            <!--  ===== CURRENT SPENDING CARD =====  -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="20dp" android:layout_marginEnd="20dp" android:layout_marginBottom="24dp" app:cardCornerRadius="16dp" app:cardElevation="0dp">
+                <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_spending_card" android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                        <!--  Label row  -->
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="TOTAL SPENDING" android:textColor="#FFE0B2" android:textSize="11sp" android:letterSpacing="0.1" android:fontFamily="@font/poppins_medium"/>
+                            <!--  Warning triangle icon  -->
+                            <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_warning" android:tint="#FFFFFF"/>
+                        </LinearLayout>
+                        <!--  Amount row  -->
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="4dp">
+                            <TextView android:id="@+id/tvCurrentSpending" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="₹12,450.00" android:textColor="#FFFFFF" android:textSize="30sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="already allocated" android:textColor="#FFE0B2" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+            <!--  ===== TARGET BUDGET INPUT =====  -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:layout_marginBottom="20dp">
+                <!--  Dollar icon circle  -->
+                <FrameLayout android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_dollar_circle" android:layout_gravity="center_horizontal" android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:text="₹" android:textColor="#FFFFFF" android:textSize="18sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+                </FrameLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TARGET BUDGET" android:textColor="#AAAABC" android:textSize="11sp" android:letterSpacing="0.1" android:layout_gravity="center_horizontal" android:layout_marginBottom="8dp" android:fontFamily="@font/poppins_medium"/>
+                <!--  Input row  -->
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_gravity="center_horizontal">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₹" android:textColor="#1A1A2E" android:textSize="28sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+                    <EditText android:id="@+id/etTargetBudget" android:layout_width="160dp" android:layout_height="wrap_content" android:text="15000" android:textColor="#1A1A2E" android:textSize="28sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold" android:inputType="numberDecimal" android:background="@null" android:paddingStart="4dp" android:gravity="start"/>
+                </LinearLayout>
+            </LinearLayout>
+            <!--  ===== SLIDER =====  -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingStart="20dp" android:paddingEnd="20dp" android:layout_marginBottom="16dp">
+                <SeekBar android:id="@+id/seekBudget" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="200000" android:progress="15000" android:progressTint="#6C2BD9" android:thumbTint="#6C2BD9"/>
+                <!--  Quick amounts  -->
+                <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:scrollbars="none" android:layout_marginTop="12dp">
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+                        <TextView android:id="@+id/chip5k" android:layout_width="60dp" android:layout_height="38dp" android:layout_marginEnd="8dp" android:text="5k" android:textColor="#6C2BD9" android:textSize="13sp" android:gravity="center" android:background="@drawable/bg_chip_outline" android:fontFamily="@font/poppins_medium"/>
+                        <TextView android:id="@+id/chip25k" android:layout_width="60dp" android:layout_height="38dp" android:layout_marginEnd="8dp" android:text="25k" android:textColor="#6C2BD9" android:textSize="13sp" android:gravity="center" android:background="@drawable/bg_chip_outline" android:fontFamily="@font/poppins_medium"/>
+                        <TextView android:id="@+id/chip50k" android:layout_width="60dp" android:layout_height="38dp" android:layout_marginEnd="8dp" android:text="50k" android:textColor="#6C2BD9" android:textSize="13sp" android:gravity="center" android:background="@drawable/bg_chip_outline" android:fontFamily="@font/poppins_medium"/>
+                        <TextView android:id="@+id/chip75k" android:layout_width="60dp" android:layout_height="38dp" android:layout_marginEnd="8dp" android:text="75k" android:textColor="#6C2BD9" android:textSize="13sp" android:gravity="center" android:background="@drawable/bg_chip_outline" android:fontFamily="@font/poppins_medium"/>
+                        <TextView android:id="@+id/chip100k" android:layout_width="60dp" android:layout_height="38dp" android:layout_marginEnd="8dp" android:text="100k" android:textColor="#6C2BD9" android:textSize="13sp" android:gravity="center" android:background="@drawable/bg_chip_outline" android:fontFamily="@font/poppins_medium"/>
+                        <TextView android:id="@+id/chip150k" android:layout_width="60dp" android:layout_height="38dp" android:text="150k" android:textColor="#6C2BD9" android:textSize="13sp" android:gravity="center" android:background="@drawable/bg_chip_outline" android:fontFamily="@font/poppins_medium"/>
+                    </LinearLayout>
+                </HorizontalScrollView>
+                <!--  Min / Max labels  -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="₹0" android:textColor="#AAAABC" android:textSize="11sp" android:fontFamily="@font/poppins_regular"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₹2,00,000" android:textColor="#AAAABC" android:textSize="11sp" android:fontFamily="@font/poppins_regular"/>
+                </LinearLayout>
+            </LinearLayout>
+            <!--  ===== BUDGET BREAKDOWN SECTION =====  -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Budget Breakdown" android:textColor="#1A1A2E" android:textSize="18sp" android:textStyle="bold" android:layout_marginStart="20dp" android:layout_marginBottom="14dp" android:fontFamily="@font/poppins_bold"/>
+            <!--  Breakdown rows  -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingStart="20dp" android:paddingEnd="20dp" android:layout_marginBottom="14dp">
+                <!--  Total Budget row  -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingTop="10dp" android:paddingBottom="10dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Total Budget" android:textColor="#555566" android:textSize="14sp" android:fontFamily="@font/poppins_regular"/>
+                    <TextView android:id="@+id/tvTotalBudget" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₹15,000.00" android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+                </LinearLayout>
+                <!--  Divider  -->
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F0EEF8"/>
+                <!--  Spent row  -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingTop="10dp" android:paddingBottom="10dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Last Project Cost" android:textColor="#555566" android:textSize="14sp" android:fontFamily="@font/poppins_regular"/>
+                    <TextView android:id="@+id/tvSpent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₹12,450.00" android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+                </LinearLayout>
+                <!--  Divider  -->
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F0EEF8"/>
+                <!--  Remaining row  -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingTop="10dp" android:paddingBottom="10dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Remaining" android:textColor="#555566" android:textSize="14sp" android:fontFamily="@font/poppins_regular"/>
+                    <TextView android:id="@+id/tvRemaining" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+₹2,550.00" android:textColor="#22C55E" android:textSize="14sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+                </LinearLayout>
+                <!-- Dynamic Projects Breakdown Container -->
+                <LinearLayout
+                    android:id="@+id/llProjectBreakdownContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="12dp">
+                </LinearLayout>
+            </LinearLayout>
+            <!--  ===== WARNING PROGRESS BAR =====  -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingStart="20dp" android:paddingEnd="20dp" android:layout_marginBottom="16dp">
+                <!--  Warning label row  -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="6dp">
+                    <TextView android:id="@+id/tvWarningText" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="⚠️ Warning: 0% of budget reached" android:textColor="#F59E0B" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                    <TextView android:id="@+id/tvWarningRatio" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0/100" android:textColor="#AAAABC" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
+                </LinearLayout>
+                <!--  Progress bar  -->
+                <ProgressBar android:id="@+id/progressBudget" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="8dp" android:max="100" android:progress="83" android:progressDrawable="@drawable/bg_progress_bar" android:background="@drawable/bg_progress_bar"/>
+            </LinearLayout>
+            <!--  ===== ROOM PREVIEW IMAGE =====  -->
+            <androidx.cardview.widget.CardView android:id="@+id/cvRoomPreview" android:layout_width="match_parent" android:layout_height="140dp" android:layout_marginStart="20dp" android:layout_marginEnd="20dp" android:layout_marginBottom="16dp" app:cardCornerRadius="16dp" app:cardElevation="0dp">
+                <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                    <!--  Room preview placeholder  -->
+                    <ImageView android:id="@+id/imgRoomPreview" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/room_preview" android:scaleType="centerCrop"/>
+                    <!--  Dark overlay  -->
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_image_overlay"/>
+                    <!--  Caption  -->
+                    <TextView android:id="@+id/tvPreviewCaption" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom|start" android:layout_margin="14dp" android:text="Previewing: None" android:textColor="#FFFFFF" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+    <!--  ===== SAVE BUDGET BUTTON (pinned bottom) =====  -->
+    <androidx.appcompat.widget.AppCompatButton android:id="@+id/btnSaveBudget" android:layout_width="0dp" android:layout_height="54dp" android:layout_marginStart="20dp" android:layout_marginEnd="20dp" android:layout_marginBottom="20dp" android:text="Save Budget" android:textColor="#FFFFFF" android:textSize="15sp" android:background="@drawable/bg_save_button" android:fontFamily="@font/poppins_bold" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

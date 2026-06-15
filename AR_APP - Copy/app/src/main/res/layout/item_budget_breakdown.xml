@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingVertical="12dp"
+    android:gravity="center_vertical">
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_saved"
+        android:tint="#A799B7"
+        android:layout_marginEnd="12dp"/>
+
+    <TextView
+        android:id="@+id/tvProjectName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Project Name"
+        android:textColor="#3D3A45"
+        android:textSize="14sp"
+        android:fontFamily="@font/poppins_medium" />
+
+    <TextView
+        android:id="@+id/tvProjectCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="₹0.00"
+        android:textColor="#3D3A45"
+        android:textSize="14sp"
+        android:fontFamily="@font/poppins_bold" />
+
+</LinearLayout>

@@ -1,0 +1,83 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#F8F7FC" tools:context=".TutorialActivity" android:id="@+id/main">
+    <!--  ===== TOP HALF: Purple gradient background =====  -->
+    <FrameLayout android:id="@+id/topSection" android:layout_width="0dp" android:layout_height="0dp" android:background="@drawable/bg_tutorial_gradient" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@id/bottomCard" app:layout_constraintHeight_percent="0.55">
+        <!--  Tutorial label top left  -->
+        <!--  Skip button top right  -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Tutorial: Welcome"
+            android:textColor="#DDCCFF"
+            android:textSize="13sp" />
+        <TextView
+            android:id="@+id/btnSkip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="36dp"
+            android:text="SKIP"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:background="@drawable/bg_skip_teal"
+            android:fontFamily="@font/poppins_bold"
+            android:letterSpacing="0.08"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center">
+            <!--  Dashed border frame with phone pill inside  -->
+            <FrameLayout android:layout_width="220dp" android:layout_height="200dp">
+                <!--  Dashed rounded rectangle border  -->
+                <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_dashed_frame"/>
+                <!--  Decorative sparkle top-left  -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="top|start" android:layout_marginStart="16dp" android:layout_marginTop="20dp" android:text="✨" android:textColor="#FFFFFF" android:textSize="16sp" android:alpha="0.7"/>
+                <!--  Decorative sparkle bottom-left  -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom|start" android:layout_marginStart="20dp" android:layout_marginBottom="24dp" android:text="✨" android:textColor="#FFFFFF" android:textSize="12sp" android:alpha="0.5"/>
+                <!--  RK text (partial logo) top-right area  -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="top|end" android:layout_marginEnd="22dp" android:layout_marginTop="28dp" android:text="RK" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold" android:alpha="0.5" android:fontFamily="@font/poppins_bold"/>
+                <!--  Phone pill shape with AR icon  -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center">
+                    <!--  Pill shape (rounded rectangle)  -->
+                    <FrameLayout android:layout_width="80dp" android:layout_height="130dp" android:background="@drawable/bg_phone_pill">
+                        <!--  AR camera icon centred in pill  -->
+                        <FrameLayout android:layout_width="48dp" android:layout_height="48dp" android:layout_gravity="center" android:background="@drawable/bg_ar_icon_pill">
+                            <ImageView android:layout_width="26dp" android:layout_height="26dp" android:layout_gravity="center" android:src="@drawable/ic_ar_camera" android:tint="#FFFFFF"/>
+                        </FrameLayout>
+                    </FrameLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+
+        </LinearLayout>
+    </FrameLayout>
+    <!--  ===== BOTTOM CARD: White rounded top card =====  -->
+    <androidx.cardview.widget.CardView android:id="@+id/bottomCard" android:layout_width="0dp" android:layout_height="0dp" app:cardCornerRadius="28dp" app:cardElevation="8dp" app:cardBackgroundColor="#FFFFFF" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHeight_percent="0.46">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:paddingStart="28dp" android:paddingEnd="28dp" android:paddingTop="32dp" android:paddingBottom="32dp">
+            <!--  GET STARTED label  -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="GET STARTED" android:textColor="#6C2BD9" android:textSize="11sp" android:letterSpacing="0.14" android:layout_marginBottom="10dp" android:fontFamily="@font/poppins_bold"/>
+            <!--  Main headline  -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Design Your Room\nIn Augmented Reality" android:textColor="#1A1A2E" android:textSize="24sp" android:textStyle="bold" android:lineSpacingMultiplier="1.2" android:layout_marginBottom="14dp" android:fontFamily="@font/poppins_bold"/>
+            <!--  Subtitle  -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Point your camera, place furniture, and visualize your perfect space before buying anything." android:textColor="#888899" android:textSize="13sp" android:lineSpacingMultiplier="1.5" android:layout_marginBottom="24dp" android:fontFamily="@font/poppins_regular"/>
+            <!--  Spacer  -->
+            <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+            <!--  Dot indicators  -->
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="20dp">
+                <!--  Active dot (wide pill)  -->
+                <View android:layout_width="24dp" android:layout_height="8dp" android:background="@drawable/bg_dot_active" android:layout_marginEnd="6dp"/>
+                <!--  Inactive dots  -->
+                <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_dot_inactive" android:layout_marginEnd="6dp"/>
+                <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_dot_inactive" android:layout_marginEnd="6dp"/>
+                <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_dot_inactive"/>
+            </LinearLayout>
+            <!--  Next button  -->
+            <Button android:id="@+id/btnNext" android:onClick="next" android:layout_width="match_parent" android:layout_height="54dp" android:text="Next ➔" android:textColor="#FFFFFF" android:textSize="15sp" android:background="@drawable/bg_next_button" android:fontFamily="@font/poppins_bold"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

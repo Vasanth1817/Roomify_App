@@ -1,0 +1,30 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="160dp"
+    android:viewportWidth="400"
+    android:viewportHeight="160">
+    <!-- Sky/background -->
+    <path android:fillColor="#2D1060" android:pathData="M0,0h400v160H0z"/>
+    <!-- Misty background trees -->
+    <path android:fillColor="#3D1A7A" android:pathData="M0,60 Q40,30 80,55 Q120,25 160,60 Q200,30 240,58 Q280,28 320,55 Q360,25 400,58 L400,160 L0,160z"/>
+    <!-- Large window frame -->
+    <path android:fillColor="#1A0840" android:pathData="M60,0h280v140H60z"/>
+    <!-- Window glass panes -->
+    <path android:fillColor="#4A2090" android:pathData="M68,8h118v60H68z"/>
+    <path android:fillColor="#4A2090" android:pathData="M194,8h118v60H194z"/>
+    <path android:fillColor="#3D1A7A" android:pathData="M68,76h118v56H68z"/>
+    <path android:fillColor="#3D1A7A" android:pathData="M194,76h118v56H194z"/>
+    <!-- Window cross bars -->
+    <path android:fillColor="#1A0840" android:pathData="M182,0h16v140H182z"/>
+    <path android:fillColor="#1A0840" android:pathData="M60,66h280v12H60z"/>
+    <!-- Garden outside: glowing purplish light -->
+    <path android:fillColor="#7C3AED" android:pathData="M128,20 Q160,5 192,20 Q160,8 128,20z"/>
+    <!-- Foreground floor -->
+    <path android:fillColor="#0D0520" android:pathData="M0,130h400v30H0z"/>
+    <!-- Curtains -->
+    <path android:fillColor="#2D0F6B" android:pathData="M0,0h65v160H0z"/>
+    <path android:fillColor="#2D0F6B" android:pathData="M335,0h65v160H0v0h330z"/>
+    <!-- Sofa silhouette -->
+    <path android:fillColor="#1A0840" android:pathData="M80,115h240v25H80z"/>
+    <path android:fillColor="#150630" android:pathData="M80,108h240v10H80z"/>
+</vector>

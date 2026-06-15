@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".BeforeAfterActivity"
+    android:id="@+id/main">
+
+    <!-- ===== SCROLL CONTENT ===== -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="24dp">
+
+            <!-- ===== TOP BAR ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="8dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_arrow_back"
+                    android:tint="#6C2BD9" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="AR Interior Design"
+                    android:textColor="#6C2BD9"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins_bold" />
+
+                <ImageView
+                    android:id="@+id/btnSettings"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@drawable/ic_settings"
+                    android:tint="#6C2BD9" />
+
+            </LinearLayout>
+
+            <!-- ===== TITLE + SUBTITLE ===== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transformation"
+                android:textColor="#6C2BD9"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/poppins_bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Compare your empty room with the new AR visualization."
+                android:textColor="#888899"
+                android:textSize="13sp"
+                android:lineSpacingMultiplier="1.4"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins_regular" />
+
+            <!-- ===== BEFORE / AFTER SPLIT IMAGE ===== -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="4dp">
+
+                <!-- Split view container -->
+                <RelativeLayout
+                    android:id="@+id/sliderContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- BEFORE image (left half) -->
+                    <ImageView
+                        android:id="@+id/imgBefore"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/img_room_before"
+                        android:scaleType="centerCrop" />
+
+                    <!-- AFTER image (right half) - clips over before -->
+                    <ImageView
+                        android:id="@+id/imgAfter"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/img_room_after"
+                        android:scaleType="centerCrop"
+                        android:clipToOutline="true" />
+
+                    <!-- Vertical divider line in centre -->
+                    <View
+                        android:id="@+id/dividerLine"
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="#FFFFFF"
+                        android:layout_centerHorizontal="true" />
+
+                    <!-- Slider drag handle (purple circle) -->
+                    <FrameLayout
+                        android:id="@+id/sliderHandle"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/bg_slider_handle"
+                        android:layout_centerInParent="true"
+                        android:elevation="6dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_left_right" />
+
+                    </FrameLayout>
+
+                    <!-- BEFORE label (bottom-left) -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Before"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:background="@drawable/bg_before_label"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/poppins_bold" />
+
+                    <!-- AFTER label (bottom-right) -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="After"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:background="@drawable/bg_after_label"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/poppins_bold" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ===== STATS ROW: Furniture Added + Est. Budget ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center_vertical">
+
+                <!-- Furniture Added -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FURNITURE ADDED"
+                        android:textColor="#AAAABC"
+                        android:textSize="10sp"
+                        android:letterSpacing="0.1"
+                        android:layout_marginBottom="2dp"
+                        android:fontFamily="@font/poppins_medium" />
+
+                    <TextView
+                        android:id="@+id/tvFurnitureCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12 Items"
+                        android:textColor="#1A1A2E"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_bold" />
+
+                </LinearLayout>
+
+                <!-- Vertical divider -->
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_stat_divider"
+                    android:layout_marginEnd="20dp" />
+
+                <!-- Est. Budget -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="EST. BUDGET"
+                        android:textColor="#AAAABC"
+                        android:textSize="10sp"
+                        android:letterSpacing="0.1"
+                        android:layout_marginBottom="2dp"
+                        android:fontFamily="@font/poppins_medium" />
+
+                    <TextView
+                        android:id="@+id/tvEstBudget"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₹4.2k"
+                        android:textColor="#F97316"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ===== DESIGN COLLECTION CARD ===== -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:padding="18dp"
+                android:background="@drawable/bg_collection_card">
+
+                <!-- Collection info -->
+                <LinearLayout
+                    android:id="@+id/collectionInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:id="@+id/tvCollectionName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="&quot;The Modern Zen&quot;"
+                        android:textColor="#1A1A2E"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_bold" />
+
+                    <TextView
+                        android:id="@+id/tvCollectionTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Created Today, 2:45 PM"
+                        android:textColor="#888899"
+                        android:textSize="12sp"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/poppins_regular" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

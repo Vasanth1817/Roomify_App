@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Disabled State (Light Violet) -->
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <solid android:color="#B393E8" />
+            <corners android:radius="14dp" />
+        </shape>
+    </item>
+    <!-- Pressed State -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#4D1D9E" />
+            <corners android:radius="14dp" />
+        </shape>
+    </item>
+    <!-- Default Enabled State (Primary Purple) -->
+    <item android:state_enabled="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#6C2BD9" />
+            <corners android:radius="14dp" />
+        </shape>
+    </item>
+</selector>

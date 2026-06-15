@@ -1,0 +1,12 @@
+build/
+.gradle/
+*.so
+*.a
+*.aar
+*.bin
+.cxx/
+unityLibrary/build/
+unityLibrary/.cxx/
+unityLibrary/src/main/Il2CppOutputProject/
+unityLibrary/src/main/jniLibs/
+unityLibrary/symbols/

@@ -1,0 +1,6 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="260dp" android:height="100dp" android:viewportWidth="260" android:viewportHeight="100">
+<!--  outer pale layer  -->
+<path android:fillColor="#44FFFFFF" android:pathData="M130,4 L256,50 L130,96 L4,50 Z"/>
+<!--  inner brighter layer  -->
+<path android:fillColor="#88FFFFFF" android:pathData="M130,22 L218,50 L130,78 L42,50 Z"/>
+</vector>

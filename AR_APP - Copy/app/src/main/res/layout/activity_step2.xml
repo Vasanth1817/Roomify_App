@@ -1,0 +1,101 @@
+﻿<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/main" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#F8F7FC" tools:context=".Step2Activity">
+    <!--  ===== TOP HALF: Pink-red gradient =====  -->
+    <FrameLayout android:id="@+id/topSection" android:layout_width="0dp" android:layout_height="0dp" android:background="@drawable/bg_tutorial_pink" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@id/bottomCard" app:layout_constraintHeight_percent="0.52">
+        <!--  Skip button top right  -->
+         <TextView
+        android:id="@+id/btnSkip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="48dp"
+        android:text="SKIP"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:background="@drawable/bg_skip_teal"
+        android:fontFamily="@font/poppins_bold"
+        android:letterSpacing="0.08"/>
+        <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent" android:paddingTop="40dp">
+            <!--  Diamond platform  -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center">
+                <FrameLayout android:layout_width="220dp" android:layout_height="150dp">
+                    <!--  Diamond shape  -->
+                    <ImageView android:layout_width="220dp" android:layout_height="120dp" android:layout_gravity="center" android:src="@drawable/ic_diamond_platform" android:scaleType="fitCenter"/>
+                    <!--  Sofa centred on diamond  -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:paddingBottom="10dp">
+                        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <!--  Sofa icon  -->
+                            <ImageView android:layout_width="80dp" android:layout_height="60dp" android:src="@drawable/ic_sofa" android:scaleType="fitCenter"/>
+                            <!--  Price tag badge (top-right of sofa)  -->
+                            <LinearLayout android:layout_width="wrap_content" android:layout_height="24dp" android:layout_gravity="top|end" android:layout_marginTop="-6dp" android:layout_marginEnd="-20dp" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="8dp" android:paddingEnd="8dp" android:background="@drawable/bg_price_tag">
+                                <!--  Tag dot  -->
+                                <View android:layout_width="5dp" android:layout_height="5dp" android:background="@drawable/bg_scan_dot" android:layout_marginEnd="4dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:text="₹1,299"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </FrameLayout>
+                    </LinearLayout>
+                    <!--  Down arrow below diamond  -->
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="bottom|center_horizontal" android:src="@drawable/ic_arrow_down_white" android:layout_marginBottom="0dp"/>
+                </FrameLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </FrameLayout>
+    <!--  ===== BOTTOM CARD: White rounded top =====  -->
+    <androidx.cardview.widget.CardView android:id="@+id/bottomCard" android:layout_width="0dp" android:layout_height="0dp" app:cardCornerRadius="28dp" app:cardElevation="8dp" app:cardBackgroundColor="#FFFFFF" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHeight_percent="0.52">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:paddingStart="28dp" android:paddingEnd="28dp" android:paddingTop="28dp" android:paddingBottom="28dp">
+            <!--  STEP 2 pill label  -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="STEP 2" android:textColor="#F5365C" android:textSize="11sp" android:letterSpacing="0.1" android:paddingStart="14dp" android:paddingEnd="14dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:background="@drawable/bg_step_pill" android:layout_marginBottom="12dp" android:fontFamily="@font/poppins_bold"/>
+            <!--  Main headline  -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Place &amp; Arrange\nFurniture" android:textColor="#1A1A2E" android:textSize="26sp" android:textStyle="bold" android:lineSpacingMultiplier="1.2" android:layout_marginBottom="10dp" android:fontFamily="@font/poppins_bold"/>
+            <!--  Subtitle  -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Tap to place, drag to reposition,\npinch to resize." android:textColor="#888899" android:textSize="13sp" android:gravity="start" android:lineSpacingMultiplier="1.5" android:layout_marginBottom="22dp" android:fontFamily="@font/poppins_regular"/>
+            <!--  TAP / MOVE / ROTATE icons row  -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="16dp">
+                <!--  TAP  -->
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <FrameLayout android:layout_width="52dp" android:layout_height="52dp" android:background="@drawable/bg_action_icon" android:layout_marginBottom="8dp">
+                        <ImageView android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:src="@drawable/ic_tap"/>
+                    </FrameLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TAP" android:textColor="#AAAABC" android:textSize="11sp" android:letterSpacing="0.1" android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+                <!--  MOVE  -->
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <FrameLayout android:layout_width="52dp" android:layout_height="52dp" android:background="@drawable/bg_action_icon" android:layout_marginBottom="8dp">
+                        <ImageView android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:src="@drawable/ic_move"/>
+                    </FrameLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MOVE" android:textColor="#AAAABC" android:textSize="11sp" android:letterSpacing="0.1" android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+                <!--  ROTATE  -->
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <FrameLayout android:layout_width="52dp" android:layout_height="52dp" android:background="@drawable/bg_action_icon" android:layout_marginBottom="8dp">
+                        <ImageView android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:src="@drawable/ic_rotate"/>
+                    </FrameLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ROTATE" android:textColor="#AAAABC" android:textSize="11sp" android:letterSpacing="0.1" android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+            </LinearLayout>
+            <!--  Spacer  -->
+            <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+            <!--  Page dots: 1 inactive, 2 inactive, 3 active, 4 inactive  -->
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="18dp">
+                <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_dot_inactive" android:layout_marginEnd="6dp"/>
+                <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_dot_inactive" android:layout_marginEnd="6dp"/>
+                <View android:layout_width="24dp" android:layout_height="8dp" android:background="@drawable/bg_dot_active" android:layout_marginEnd="6dp"/>
+                <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_dot_inactive"/>
+            </LinearLayout>
+            <!--  Next button with arrow  -->
+            <Button android:id="@+id/btnNext" android:layout_width="match_parent" android:layout_height="54dp" android:text="Next â†’" android:textColor="#FFFFFF" android:textSize="15sp" android:background="@drawable/bg_next_button_pink" android:fontFamily="@font/poppins_bold"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

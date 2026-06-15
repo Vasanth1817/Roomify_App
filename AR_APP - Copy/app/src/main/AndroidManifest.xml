@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/homee"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/homee"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.AR_APP"
+        tools:remove="android:extractNativeLibs">
+        <activity
+            android:name=".VirtualRoomInputActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BeforeAfterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ArCameraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThemeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Step3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Step2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Step1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".SavedDesignsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AR_APP" />
+        <activity
+            android:name=".TutorialActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AlertsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".FurnitureCatalogActivity"
+            android:exported="true">
+        </activity>
+        
+        <activity
+            android:name=".ARViewerActivity"
+            android:exported="true"
+            android:process=":Unity" />
+
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Home"
+            android:exported="false" />
+        <activity
+            android:name=".registration"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".BudgetActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

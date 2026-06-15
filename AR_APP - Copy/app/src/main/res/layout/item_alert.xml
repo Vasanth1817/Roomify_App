@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="#FFFFFF"
+    android:layout_marginBottom="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <FrameLayout
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_action_purple"
+            android:layout_marginEnd="16dp">
+
+            <ImageView
+                android:id="@+id/imgAlertIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_notifications"
+                android:tint="#FFFFFF" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvAlertTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alert Title"
+                android:textColor="#1A1A2E"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_bold" />
+
+            <TextView
+                android:id="@+id/tvAlertDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alert description text goes here..."
+                android:textColor="#888899"
+                android:textSize="13sp"
+                android:lineSpacingMultiplier="1.2"
+                android:fontFamily="@font/poppins_regular" />
+
+            <TextView
+                android:id="@+id/tvAlertTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Just Now"
+                android:textColor="#AAAABC"
+                android:textSize="11sp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/poppins_medium" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

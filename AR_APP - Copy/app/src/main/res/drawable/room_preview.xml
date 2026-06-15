@@ -1,0 +1,32 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="140dp"
+    android:viewportWidth="400"
+    android:viewportHeight="140">
+    <!-- Wall -->
+    <path android:fillColor="#D6C9A8" android:pathData="M0,0h400v110H0z"/>
+    <!-- Floor -->
+    <path android:fillColor="#B8A98A" android:pathData="M0,110h400v30H0z"/>
+    <!-- Window -->
+    <path android:fillColor="#AED6F1" android:pathData="M260,10h120v90H260z"/>
+    <path android:strokeColor="#C9B99A" android:strokeWidth="2"
+        android:pathData="M320,10v90M260,55h120" android:fillColor="#00000000"/>
+    <!-- Curtains -->
+    <path android:fillColor="#E8DCC8" android:pathData="M255,10h15v90h-15z"/>
+    <path android:fillColor="#E8DCC8" android:pathData="M375,10h15v90h-15z"/>
+    <!-- Sofa -->
+    <path android:fillColor="#8D7B68" android:pathData="M30,75h200v30H30z"/>
+    <path android:fillColor="#7A6A58" android:pathData="M30,65h200v14H30z"/>
+    <path android:fillColor="#7A6A58" android:pathData="M30,65h16v40H30zM214,65h16v40H214z"/>
+    <!-- Cushions -->
+    <path android:fillColor="#C4A882" android:pathData="M50,68h50v10H50z"/>
+    <path android:fillColor="#C4A882" android:pathData="M115,68h50v10H115z"/>
+    <path android:fillColor="#C4A882" android:pathData="M180,68h30v10H180z"/>
+    <!-- Plant -->
+    <path android:fillColor="#6B8F5E" android:pathData="M10,50 Q20,30 30,50 Q20,35 10,50z"/>
+    <path android:fillColor="#6B8F5E" android:pathData="M15,55 Q5,40 20,45 Q10,42 15,55z"/>
+    <path android:fillColor="#5C4A3A" android:pathData="M17,55h6v20h-6z"/>
+    <!-- Floor lamp -->
+    <path android:fillColor="#9E9E9E" android:pathData="M240,40h4v65h-4z"/>
+    <path android:fillColor="#F5F5F5" android:pathData="M228,35h28v12H228z"/>
+</vector>

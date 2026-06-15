@@ -1,0 +1,19 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="90dp"
+    android:height="90dp"
+    android:viewportWidth="90"
+    android:viewportHeight="90">
+    <!-- Background circle -->
+    <path android:fillColor="#D8C4F5" android:pathData="M45,0 A45,45 0 1,1 45,90 A45,45 0 1,1 45,0z"/>
+    <!-- Hair (dark) -->
+    <path android:fillColor="#2D1A4A" android:pathData="M20,38 Q20,15 45,15 Q70,15 70,38 Q70,30 65,28 Q55,20 45,20 Q35,20 25,28 Q20,30 20,38z"/>
+    <!-- Face -->
+    <path android:fillColor="#F5D5B8" android:pathData="M30,40 Q30,62 45,65 Q60,62 60,40 Q60,28 45,28 Q30,28 30,40z"/>
+    <!-- Neck -->
+    <path android:fillColor="#F5D5B8" android:pathData="M40,63h10v10H40z"/>
+    <!-- Shoulders / body -->
+    <path android:fillColor="#6C2BD9" android:pathData="M15,90 Q15,72 45,70 Q75,72 75,90z"/>
+    <!-- Hair flow -->
+    <path android:fillColor="#2D1A4A" android:pathData="M20,38 Q18,55 22,65 Q26,52 30,46 Q28,42 20,38z"/>
+    <path android:fillColor="#2D1A4A" android:pathData="M70,38 Q72,55 68,65 Q64,52 60,46 Q62,42 70,38z"/>
+</vector>

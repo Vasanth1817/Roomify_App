@@ -1,0 +1,85 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:id="@+id/main" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#F8F7FC" tools:context=".ProfileActivity">
+    <!--  ===== SCROLL CONTENT =====  -->
+    <ScrollView android:id="@+id/scrollView" android:layout_width="0dp" android:layout_height="0dp" android:scrollbars="none" android:fillViewport="true" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@id/bottomNavBar" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="16dp">
+            <!--  ===== TOP BAR =====  -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingStart="16dp" android:paddingEnd="16dp" android:paddingTop="16dp" android:paddingBottom="8dp" android:gravity="center_vertical">
+                <ImageView android:id="@+id/btnBack" android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/ic_arrow_back" android:onClick="back" android:tint="#1A1A2E"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="My Profile" android:textColor="#1A1A2E" android:textSize="20sp" android:textStyle="bold" android:layout_marginStart="8dp" android:fontFamily="@font/poppins_bold"/>
+                <ImageView android:id="@+id/btnSettings" android:layout_width="26dp" android:layout_height="26dp" android:src="@drawable/ic_settings" android:tint="#6C2BD9"/>
+            </LinearLayout>
+            <!--  ===== PROFILE AVATAR + NAME =====  -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:paddingTop="20dp" android:paddingBottom="20dp">
+                <!--  Avatar with edit badge  -->
+                <FrameLayout android:layout_width="90dp" android:layout_height="90dp" android:layout_marginBottom="14dp">
+                    <!--  Avatar circle  -->
+                    <ImageView android:id="@+id/imgAvatar" android:layout_width="90dp" android:layout_height="90dp" android:src="@drawable/avatar_elena" android:scaleType="centerCrop" android:background="@drawable/bg_avatar_circle" android:clipToOutline="true"/>
+                    <!--  Purple edit badge  -->
+                    <FrameLayout android:layout_width="26dp" android:layout_height="26dp" android:layout_gravity="bottom|end" android:background="@drawable/bg_edit_badge">
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:layout_gravity="center" android:src="@drawable/ic_edit_pencil" android:tint="#FFFFFF"/>
+                    </FrameLayout>
+                </FrameLayout>
+                <!--  Name  -->
+                <TextView android:id="@+id/tvName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Elena Vance" android:textColor="#1A1A2E" android:textSize="20sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+                <!--  Email  -->
+                <TextView android:id="@+id/tvEmail" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="elena.vance@designspace.ar" android:textColor="#888899" android:textSize="12sp" android:layout_marginTop="2dp" android:fontFamily="@font/poppins_regular"/>
+            </LinearLayout>
+            <!--  ===== STATS ROW =====  -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:layout_marginBottom="16dp">
+                <!--  Saved Designs stat  -->
+                <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="8dp" app:cardCornerRadius="14dp" app:cardElevation="1dp" app:cardBackgroundColor="#FFFFFF">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_bookmark" android:tint="#6C2BD9" android:layout_marginBottom="6dp"/>
+                        <TextView android:id="@+id/tvSavedDesignsCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textColor="#1A1A2E" android:textSize="26sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Saved Designs" android:textColor="#888899" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <!--  Active Rooms stat  -->
+                <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="8dp" app:cardCornerRadius="14dp" app:cardElevation="1dp" app:cardBackgroundColor="#FFFFFF">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_grid" android:tint="#F97316" android:layout_marginBottom="6dp"/>
+                        <TextView android:id="@+id/tvActiveRoomsCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textColor="#1A1A2E" android:textSize="26sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Active Rooms" android:textColor="#888899" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+            <!--  ===== SIGN OUT BUTTON =====  --> -->
+            <androidx.cardview.widget.CardView android:id="@+id/cardSignOut" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:layout_marginBottom="8dp" app:cardCornerRadius="14dp" app:cardElevation="1dp" app:cardBackgroundColor="#FFF5F5">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center" android:paddingTop="14dp" android:paddingBottom="14dp">
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_sign_out" android:tint="#EF4444" android:layout_marginEnd="8dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sign Out" android:textColor="#EF4444" android:textSize="14sp" android:textStyle="bold" android:fontFamily="@font/poppins_bold"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+    <!--  ===== BOTTOM NAVIGATION BAR =====  -->
+    <LinearLayout android:id="@+id/bottomNavBar" android:layout_width="0dp" android:layout_height="65dp" android:orientation="horizontal" android:background="@drawable/bg_bottom_nav" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <!--  Home  -->
+        <LinearLayout android:id="@+id/navHome" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_home" android:tint="#AAAABC"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Home" android:textColor="#AAAABC" android:textSize="10sp" android:layout_marginTop="2dp" android:fontFamily="@font/poppins_regular"/>
+        </LinearLayout>
+        <!--  Explore  -->
+        <LinearLayout android:id="@+id/navExplore" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_explore" android:tint="#AAAABC"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Explore" android:textColor="#AAAABC" android:textSize="10sp" android:layout_marginTop="2dp" android:fontFamily="@font/poppins_regular"/>
+        </LinearLayout>
+        <!--  Saved  -->
+        <LinearLayout android:id="@+id/navSaved" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_bookmark" android:tint="#AAAABC"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Saved" android:textColor="#AAAABC" android:textSize="10sp" android:layout_marginTop="2dp" android:fontFamily="@font/poppins_regular"/>
+        </LinearLayout>
+        <!--  Alerts  -->
+        <LinearLayout android:id="@+id/navAlerts" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_notifications" android:tint="#AAAABC"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Alerts" android:textColor="#AAAABC" android:textSize="10sp" android:layout_marginTop="2dp" android:fontFamily="@font/poppins_regular"/>
+        </LinearLayout>
+        <!--  Profile (active)  -->
+        <LinearLayout android:id="@+id/navProfile" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <FrameLayout android:layout_width="48dp" android:layout_height="34dp" android:background="@drawable/bg_nav_active">
+                <ImageView android:layout_width="22dp" android:layout_height="22dp" android:layout_gravity="center" android:src="@drawable/ic_person" android:tint="#6C2BD9"/>
+            </FrameLayout>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Profile" android:textColor="#6C2BD9" android:textSize="10sp" android:layout_marginTop="2dp" android:fontFamily="@font/poppins_medium"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
