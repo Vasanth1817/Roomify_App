@@ -1,27 +1,55 @@
-frontend:
-  dependencies:
-    "@google/model-viewer": "^4.3.0"
-    "framer-motion": "^12.40.0"
-    "lucide-react": "^1.17.0"
-    "react": "^19.2.6"
-    "react-dom": "^19.2.6"
-    "react-router-dom": "^7.16.0"
-  devDependencies:
-    "@eslint/js": "^10.0.1"
-    "@types/react": "^19.2.14"
-    "@types/react-dom": "^19.2.3"
-    "@vitejs/plugin-react": "^6.0.1"
-    "eslint": "^10.3.0"
-    "eslint-plugin-react-hooks": "^7.1.1"
-    "eslint-plugin-react-refresh": "^0.5.2"
-    "globals": "^17.6.0"
-    "vite": "^8.0.12"
-seleniumTests:
-  pythonDependencies:
-    "selenium": ">=4.10.0"
-    "pandas": ">=2.0.0"
-    "openpyxl": ">=3.1.0"
-    "webdriver-manager": ">=4.0.0"
-  optionalTools:
-    "pytest": ">=8.0.0"
-    "pytest-xdist": ">=3.0.0"
+name: RoomifyWeb Selenium Tests
+
+on:
+  push:
+    paths:
+      - 'RoomifyWeb/**'
+  pull_request:
+    paths:
+      - 'RoomifyWeb/**'
+
+jobs:
+  selenium-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+
+      - name: Install frontend dependencies
+        working-directory: RoomifyWeb
+        run: |
+          npm ci
+
+      - name: Run Vite dev server in background
+        working-directory: RoomifyWeb
+        run: |
+          npm run dev -- --port 5174 &
+          sleep 5
+
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Selenium test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install selenium pandas openpyxl webdriver-manager
+
+      - name: Run Selenium tests
+        working-directory: RoomifyWeb
+        run: |
+          python run_selenium_tests.py
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: roomifyweb-selenium-report
+          path: RoomifyWeb/E2E_Test_Report_RoomifyWeb.xlsx
