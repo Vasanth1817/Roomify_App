@@ -1,0 +1,55 @@
+name: RoomifyWeb Selenium Tests
+
+on:
+  push:
+    paths:
+      - 'RoomifyWeb/**'
+  pull_request:
+    paths:
+      - 'RoomifyWeb/**'
+
+jobs:
+  selenium-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+
+      - name: Install frontend dependencies
+        working-directory: RoomifyWeb
+        run: |
+          npm ci
+
+      - name: Run Vite dev server in background
+        working-directory: RoomifyWeb
+        run: |
+          npm run dev -- --port 5174 &
+          sleep 5
+
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Selenium test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install selenium pandas openpyxl webdriver-manager
+
+      - name: Run Selenium tests
+        working-directory: RoomifyWeb
+        run: |
+          python run_selenium_tests.py
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: roomifyweb-selenium-report
+          path: RoomifyWeb/E2E_Test_Report_RoomifyWeb.xlsx
