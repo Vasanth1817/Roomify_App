@@ -1,0 +1,78 @@
+name: Deploy Roomify App
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy-frontend:
+    name: Deploy Frontend to GitHub Pages
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./RoomifyWeb
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: './RoomifyWeb/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        # Note: Ensure your vite.config.js has `base: "/Roomify_App/"` for this to work correctly!
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './RoomifyWeb/dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  deploy-backend-render:
+    name: Trigger Backend Deploy on Render
+    runs-on: ubuntu-latest
+    needs: deploy-frontend # Optional: wait for frontend to succeed
+    steps:
+      - name: Trigger Render Deployment
+        # You need to create a Render Deploy Hook and add it as a GitHub Secret named RENDER_DEPLOY_HOOK_URL
+        run: |
+          if [ -z "${{ secrets.RENDER_DEPLOY_HOOK_URL }}" ]; then
+            echo "RENDER_DEPLOY_HOOK_URL secret is not set. Skipping Render deployment."
+          else
+            curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+          fi
+
+  # deploy-backend-heroku:
+  #   name: Deploy Backend to Heroku
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: akhileshns/heroku-deploy@v3.12.14
+  #       with:
+  #         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+  #         heroku_app_name: "your-heroku-app-name" # Replace with your Heroku app name
+  #         heroku_email: "your-email@example.com"  # Replace with your email
+  #         appdir: "RoomifyBackend" # Only deploy the backend directory
