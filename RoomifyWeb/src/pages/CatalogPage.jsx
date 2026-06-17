@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { ShoppingCart, Package, Search, Filter } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { ShoppingCart, Package, Search, Camera } from 'lucide-react';
 import '../components/Catalog.css';
 import { getFurniture } from '../api/roomifyApi';
+import { useUnityAR } from '../context/UnityARContext';
 
 const CatalogPage = () => {
   const [furniture, setFurniture] = useState([]);
@@ -11,6 +13,10 @@ const CatalogPage = () => {
   const [selectedModel, setSelectedModel] = useState(null);
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('All');
+
+  // AR integration
+  const navigate = useNavigate();
+  const { selectFurnitureForAR } = useUnityAR();
 
   useEffect(() => {
     const loadData = async () => {
@@ -44,6 +50,15 @@ const CatalogPage = () => {
   const addToRoom = (item) => {
     setSpent((prev) => prev + item.price);
     setSelectedModel(item);
+  };
+
+  /**
+   * Sends the item to UnityARContext and navigates to /ar.
+   * The Unity scene will receive this item via sendMessage once loaded.
+   */
+  const viewInAR = (item) => {
+    selectFurnitureForAR(item);
+    navigate('/ar');
   };
 
   return (
@@ -106,13 +121,25 @@ const CatalogPage = () => {
             ar-modes="scene-viewer webxr quick-look"
             style={{ width: '100%', height: '420px', background: 'var(--bg-darker)', borderRadius: '14px' }}
           />
-          <button
-            className="btn-secondary"
-            onClick={() => setSelectedModel(null)}
-            style={{ marginTop: '1rem' }}
-          >
-            Close Preview
-          </button>
+          <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', marginTop: '1rem', flexWrap: 'wrap' }}>
+            <button
+              className="btn-primary"
+              style={{
+                display: 'flex', alignItems: 'center', gap: '0.4rem',
+                background: 'linear-gradient(135deg,#8B4DFA,#6C2FD9)',
+              }}
+              onClick={() => viewInAR(selectedModel)}
+            >
+              <Camera size={15} />
+              Open in Unity AR
+            </button>
+            <button
+              className="btn-secondary"
+              onClick={() => setSelectedModel(null)}
+            >
+              Close Preview
+            </button>
+          </div>
         </div>
       )}
 
@@ -133,12 +160,36 @@ const CatalogPage = () => {
                 <h3 style={{ margin: '0.5rem 0' }}>{item.name}</h3>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem' }}>
                   <span style={{ fontWeight: '700', color: '#8B4DFA' }}>₹{item.price.toLocaleString()}</span>
-                  <div style={{ display: 'flex', gap: '0.5rem' }}>
-                    <button className="btn-icon" onClick={() => setSelectedModel(item)}>
-                      <Package size={16} />
+                  <div style={{ display: 'flex', gap: '0.4rem' }}>
+                    {/* 3D preview */}
+                    <button
+                      className="btn-icon"
+                      onClick={() => setSelectedModel(item)}
+                      title="3D Preview"
+                    >
+                      <Package size={15} />
                     </button>
-                    <button className="btn-icon" onClick={() => addToRoom(item)} style={{ background: '#8B4DFA' }}>
-                      <ShoppingCart size={16} />
+                    {/* Add to budget tracker */}
+                    <button
+                      className="btn-icon"
+                      onClick={() => addToRoom(item)}
+                      style={{ background: '#8B4DFA' }}
+                      title="Add to room"
+                    >
+                      <ShoppingCart size={15} />
+                    </button>
+                    {/* ── NEW: Unity AR launch ── */}
+                    <button
+                      className="btn-icon"
+                      onClick={() => viewInAR(item)}
+                      style={{
+                        background: 'linear-gradient(135deg,#8B4DFA,#6C2FD9)',
+                        fontSize: '14px',
+                        lineHeight: 1,
+                      }}
+                      title="View in Unity AR"
+                    >
+                      🥽
                     </button>
                   </div>
                 </div>

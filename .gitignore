@@ -1,0 +1,9 @@
+# Ignore Unity and large binary artifacts
+/unityLibrary.zip
+/"AR_APP - Copy"/unityLibrary.zip
+
+# Roomify public unity assets
+/RoomifyWeb/public/unity/
+
+# Optional: ignore other zip archives
+# *.zip

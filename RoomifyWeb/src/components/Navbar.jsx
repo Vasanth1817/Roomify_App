@@ -1,12 +1,18 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Layers, Settings, Grid, Monitor, User, DollarSign } from 'lucide-react';
+import { Home, Layers, Settings, Grid, Monitor, User, DollarSign, Camera } from 'lucide-react';
 import { getCurrentUser } from '../utils/auth';
+import { useUnityAR } from '../context/UnityARContext';
 import './Navbar.css';
 
 const Navbar = () => {
   const location = useLocation();
   const user = getCurrentUser();
+  const { selectedFurniture, placements } = useUnityAR();
+
+  // Show a badge on the AR link when an item is selected or items have been placed
+  const arBadgeCount = placements.length;
+  const arHasItem = !!selectedFurniture;
 
   return (
     <nav className="navbar">
@@ -33,6 +39,19 @@ const Navbar = () => {
             <DollarSign size={18} />
             <span>Budget</span>
           </Link>
+
+          {/* ── AR nav link with optional badge ── */}
+          <Link
+            to="/ar"
+            className={`nav-link nav-link-ar ${location.pathname === '/ar' ? 'active' : ''} ${arHasItem ? 'nav-link-ar-ready' : ''}`}
+          >
+            <Camera size={18} />
+            <span>AR Planner</span>
+            {arBadgeCount > 0 && (
+              <span className="nav-ar-badge">{arBadgeCount}</span>
+            )}
+          </Link>
+
           <Link to={user ? '/profile' : '/login'} className={`nav-link ${location.pathname === '/profile' ? 'active' : ''}`}>
             <User size={18} />
             <span>{user ? 'Profile' : 'Login'}</span>

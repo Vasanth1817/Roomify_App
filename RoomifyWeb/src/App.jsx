@@ -9,26 +9,36 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Profile from './pages/Profile'
 import Budget from './pages/Budget'
+import ARPage from './pages/ARPage'
+import { UnityARProvider } from './context/UnityARContext'
 import './App.css'
 
 function App() {
   return (
     <Router>
-      <div className="app-container">
-        <Navbar />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/catalog" element={<CatalogPage />} />
-            <Route path="/saved" element={<SavedDesigns />} />
-            <Route path="/budget" element={<Budget />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
-        </main>
-      </div>
+      {/*
+        UnityARProvider wraps the entire app so that:
+          - CatalogPage can call selectFurnitureForAR(item)
+          - ARPage / UnityARViewer can read selectedFurniture and write placements
+      */}
+      <UnityARProvider>
+        <div className="app-container">
+          <Navbar />
+          <main>
+            <Routes>
+              <Route path="/"         element={<Home />} />
+              <Route path="/catalog"  element={<CatalogPage />} />
+              <Route path="/saved"    element={<SavedDesigns />} />
+              <Route path="/budget"   element={<Budget />} />
+              <Route path="/profile"  element={<Profile />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/login"    element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/ar"       element={<ARPage />} />
+            </Routes>
+          </main>
+        </div>
+      </UnityARProvider>
     </Router>
   )
 }

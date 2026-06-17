@@ -59,3 +59,40 @@
   background: rgba(139, 77, 250, 0.15);
   color: #B485FF;
 }
+
+/* ── AR nav link extras ─────────────────────────────────────── */
+.nav-link-ar {
+  position: relative;
+}
+
+/* Lights up when a furniture item is queued for AR */
+.nav-link-ar-ready {
+  color: #b07cf8 !important;
+  background: rgba(139, 77, 250, 0.1) !important;
+  animation: navArPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes navArPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139,77,250,0); }
+  50%       { box-shadow: 0 0 0 4px rgba(139,77,250,0.18); }
+}
+
+/* Placement count badge */
+.nav-ar-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 99px;
+  background: #8B4DFA;
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  pointer-events: none;
+}
