@@ -6,4 +6,4 @@
 /RoomifyWeb/public/unity/
 
 # Optional: ignore other zip archives
-# *.zip
+*.zip
