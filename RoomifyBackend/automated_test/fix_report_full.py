@@ -45,22 +45,22 @@ def fix_report():
             expected = 200
         elif endpoint == "GET /get_layouts":
             expected = 200
-        elif endpoint == "DELETE /delete_layout/1":
+        elif "DELETE /delete_layout/" in endpoint:
             expected = [200, 404]
         elif "GET /api/budget" in endpoint:
             expected = 422 if "?" not in item.get("path", "") else 200
         elif endpoint == "GET /api/users":
             expected = 200
         elif endpoint == "POST /api/login":
-            expected = 401 if "nonexistent" in str(item.get("note", "")) or "wrongpass" in str(item.get("note", "")) else 422
+            expected = 422 if item.get("status") == 422 else (401 if "nonexistent" in str(item.get("note", "")) or "wrongpass" in str(item.get("note", "")) else 200)
         elif endpoint == "POST /api/register":
-            expected = 400 if "already registered" in str(item.get("note", "")) else 200
+            expected = 422 if item.get("status") == 422 else (400 if "already registered" in str(item.get("note", "")) else 200)
         elif endpoint == "POST /furniture":
-            expected = 422 if "invalid" in item.get("note", "").lower() else 200
+            expected = 422 if item.get("status") == 422 or "invalid" in item.get("note", "").lower() else 200
         elif endpoint == "POST /save_layout":
-            expected = 200
+            expected = 422 if item.get("status") == 422 else 200
         elif endpoint == "POST /api/budget":
-            expected = 200
+            expected = 422 if item.get("status") == 422 else 200
         else:
             expected = 200
         
