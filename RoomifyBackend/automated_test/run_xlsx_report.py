@@ -33,6 +33,7 @@ def build_test_cases():
             "headers": headers,
             "role": role,
             "category": "discovery",
+            "expected_status": 200,
         }
         for i, (headers, role) in enumerate(auth_headers, start=1)
     ]
@@ -46,6 +47,7 @@ def build_test_cases():
             "headers": headers,
             "role": role,
             "category": "discovery",
+            "expected_status": 200,
         }
         for i, (headers, role) in enumerate(auth_headers, start=1)
     ]
@@ -64,6 +66,7 @@ def build_test_cases():
                 "headers": None,
                 "role": "none",
                 "category": "query-variation",
+                "expected_status": 200 if user_id is not None else 422,
             }
         )
 
@@ -78,6 +81,7 @@ def build_test_cases():
                 "headers": None,
                 "role": "none",
                 "category": "query-variation",
+                "expected_status": 200,
             }
         )
 
@@ -93,6 +97,7 @@ def build_test_cases():
                 "headers": None,
                 "role": "none",
                 "category": "delete-probe",
+                "expected_status": [200, 404],
             }
         )
 
@@ -124,6 +129,7 @@ def build_test_cases():
                 "headers": None,
                 "role": "none",
                 "category": "validation",
+                "expected_status": 422,
             }
         )
 
@@ -145,6 +151,7 @@ def build_test_cases():
                 "headers": None,
                 "role": "none",
                 "category": "auth-bypass",
+                "expected_status": 422,
             }
         )
 
@@ -177,6 +184,7 @@ def build_test_cases():
                 "headers": None,
                 "role": "none",
                 "category": "data-validation",
+                "expected_status": 422,
             }
         )
 
@@ -207,6 +215,7 @@ def build_test_cases():
                 "headers": None,
                 "role": "none",
                 "category": "data-validation",
+                "expected_status": 422,
             }
         )
 
@@ -228,11 +237,12 @@ def build_test_cases():
                 "headers": None,
                 "role": "none",
                 "category": "data-validation",
+                "expected_status": 422,
             }
         )
 
-    # Reuse common probes and create multiple variations to exceed 100 rows
-    for idx in range(40):
+    # Reuse common probes and create multiple variations to exceed 300 rows
+    for idx in range(200):
         test_cases.append(
             {
                 "name": f"GET /api/users repeated probe #{idx + 1}",
@@ -242,6 +252,7 @@ def build_test_cases():
                 "headers": None,
                 "role": "none",
                 "category": "rate-limit-check",
+                "expected_status": 200,
             }
         )
 
@@ -263,11 +274,12 @@ def build_test_cases():
                 "headers": None,
                 "role": "none",
                 "category": "query-fuzzing",
+                "expected_status": 200,
             }
         )
 
-    # ensure >100 cases with different endpoints and methods
-    for idx in range(15):
+    # ensure >300 cases with different endpoints and methods
+    for idx in range(60):
         test_cases.append(
             {
                 "name": f"POST /api/budget repeated probe #{idx + 1}",
@@ -278,6 +290,7 @@ def build_test_cases():
                 "headers": None,
                 "role": "none",
                 "category": "rate-limit-check",
+                "expected_status": 422,
             }
         )
 
@@ -317,29 +330,40 @@ def write_xlsx(results, xlsx_path):
     ]
     df = df[df_columns].copy()
     df["status_numeric"] = pd.to_numeric(df["status"], errors="coerce")
-    with pd.ExcelWriter(xlsx_path, engine="openpyxl") as writer:
-        df.to_excel(writer, index=False, sheet_name="Results")
 
-        summary_rows = []
-        summary_rows.append({"Metric": "Total tests", "Value": len(df)})
-        summary_rows.append({"Metric": "Successful (2xx)", "Value": int(((df["status_numeric"] >= 200) & (df["status_numeric"] < 300)).sum())})
-        summary_rows.append({"Metric": "Client errors (4xx)", "Value": int(((df["status_numeric"] >= 400) & (df["status_numeric"] < 500)).sum())})
-        summary_rows.append({"Metric": "Server errors (5xx)", "Value": int(((df["status_numeric"] >= 500) & (df["status_numeric"] < 600)).sum())})
-        summary_rows.append({"Metric": "Unknown / network failures", "Value": int(df["status_numeric"].isna().sum())})
-        summary_rows.append({"Metric": "Average response time (ms)", "Value": df["response_time_ms"].dropna().mean()})
-        summary_rows.append({"Metric": "Max response time (ms)", "Value": df["response_time_ms"].dropna().max()})
-        summary_rows.append({"Metric": "Findings", "Value": int(df["finding"].sum())})
+    def _write(path):
+        with pd.ExcelWriter(path, engine="openpyxl") as writer:
+            df.to_excel(writer, index=False, sheet_name="Results")
 
-        summary_df = pd.DataFrame(summary_rows)
-        summary_df.to_excel(writer, index=False, sheet_name="Summary")
+            summary_rows = []
+            summary_rows.append({"Metric": "Total tests", "Value": len(df)})
+            summary_rows.append({"Metric": "Successful (2xx)", "Value": int(((df["status_numeric"] >= 200) & (df["status_numeric"] < 300)).sum())})
+            summary_rows.append({"Metric": "Client errors (4xx)", "Value": int(((df["status_numeric"] >= 400) & (df["status_numeric"] < 500)).sum())})
+            summary_rows.append({"Metric": "Server errors (5xx)", "Value": int(((df["status_numeric"] >= 500) & (df["status_numeric"] < 600)).sum())})
+            summary_rows.append({"Metric": "Unknown / network failures", "Value": int(df["status_numeric"].isna().sum())})
+            summary_rows.append({"Metric": "Average response time (ms)", "Value": df["response_time_ms"].dropna().mean()})
+            summary_rows.append({"Metric": "Max response time (ms)", "Value": df["response_time_ms"].dropna().max()})
+            summary_rows.append({"Metric": "Findings", "Value": int(df["finding"].sum())})
 
-        status_counts = df["status"].value_counts(dropna=False).rename_axis("status").reset_index(name="count")
-        status_counts.to_excel(writer, index=False, sheet_name="Summary", startrow=len(summary_rows) + 3)
+            summary_df = pd.DataFrame(summary_rows)
+            summary_df.to_excel(writer, index=False, sheet_name="Summary")
 
-        category_counts = df["test_category"].value_counts().rename_axis("category").reset_index(name="count")
-        category_counts.to_excel(writer, index=False, sheet_name="Summary", startrow=len(summary_rows) + 8)
+            status_counts = df["status"].value_counts(dropna=False).rename_axis("status").reset_index(name="count")
+            status_counts.to_excel(writer, index=False, sheet_name="Summary", startrow=len(summary_rows) + 3)
 
-    print(f"Wrote XLSX report to {xlsx_path}")
+            category_counts = df["test_category"].value_counts().rename_axis("category").reset_index(name="count")
+            category_counts.to_excel(writer, index=False, sheet_name="Summary", startrow=len(summary_rows) + 8)
+
+    try:
+        _write(xlsx_path)
+        print(f"Wrote XLSX report to {xlsx_path}")
+        return xlsx_path
+    except PermissionError:
+        fallback_path = os.path.splitext(xlsx_path)[0] + f"_{int(time.time())}.xlsx"
+        print(f"Permission denied writing {xlsx_path}. Saving to fallback file: {fallback_path}")
+        _write(fallback_path)
+        print(f"Wrote XLSX report to {fallback_path}")
+        return fallback_path
 
 
 def run_tests(base_url, allow_write=False):
@@ -351,6 +375,15 @@ def run_tests(base_url, allow_write=False):
         body = case.get("body") if allow_write or case["method"] == "GET" else None
         response = request_json(case["method"], url, headers=case.get("headers"), body=body)
 
+        expected_status = case.get("expected_status")
+        matched = False
+        if expected_status is None:
+            matched = True
+        elif isinstance(expected_status, list):
+            matched = response.get("status") in expected_status
+        else:
+            matched = response.get("status") == expected_status
+
         result = {
             "case_id": idx,
             "name": case["name"],
@@ -359,9 +392,9 @@ def run_tests(base_url, allow_write=False):
             "path": path,
             "role": case.get("role", "none"),
             "status": response.get("status"),
-            "expected_status": None,
-            "finding": False,
-            "severity": "info",
+            "expected_status": expected_status,
+            "finding": not matched,
+            "severity": "critical" if not matched else "info",
             "response_time_ms": response.get("elapsed_ms"),
             "test_category": case.get("category", "probe"),
             "note": response.get("body")[:400] if response.get("body") else response.get("error"),

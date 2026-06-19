@@ -54,10 +54,17 @@ def request_json(method, url, headers=None, body=None, timeout=10):
             "elapsed_ms": int((time.time() - start) * 1000),
             "headers": dict(exc.headers.items()),
         }
-    except urllib.error.URLError as exc:
+    except (urllib.error.URLError, OSError, TimeoutError) as exc:
         return {
             "status": None,
             "error": str(exc),
+            "elapsed_ms": int((time.time() - start) * 1000),
+            "headers": {},
+        }
+    except Exception as exc:
+        return {
+            "status": None,
+            "error": f"Unhandled request error: {exc}",
             "elapsed_ms": int((time.time() - start) * 1000),
             "headers": {},
         }
